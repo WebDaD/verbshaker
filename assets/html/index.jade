@@ -45,20 +45,20 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-cont
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             li(ng-class="{ active: ctrl.language === 'de'}")
-              a(href='#' ng-click="ctrl.changeLanguage('de')" title="de")
+              a(href='#' ng-click="ctrl.language = 'de'" title="de")
                 span.flag-icon.flag-icon-de
             li(ng-class="{ active: ctrl.language === 'en'}")
-              a(href='#' ng-click="ctrl.changeLanguage('en')" title="en")
+              a(href='#' ng-click="ctrl.language = 'en'" title="en")
                 span.flag-icon.flag-icon-en
             li(ng-class="{ active: ctrl.language === 'fr'}")
-              a(href='#' ng-click="ctrl.changeLanguage('fr')" title="fr")
+              a(href='#' ng-click="ctrl.language = 'fr'" title="fr")
                 span.flag-icon.flag-icon-fr
             li(ng-class="{ active: ctrl.language === 'es'}")
-              a(href='#' ng-click="ctrl.changeLanguage('es')" title="es")
+              a(href='#' ng-click="ctrl.language = 'es'" title="es")
                 span.flag-icon.flag-icon-es
         // /.nav-collapse
     #content.fluid-container
-      span#proverb(ng-click="ctrl.newProverb()") {{ctrl.proverb}}
+      span#proverb(ng-click="ctrl.newProverb()" title="Click to Shake...") {{ctrl.proverb}}
 
 
     script(src='js/bootstrap-select.js')

@@ -24,6 +24,35 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * ios
 * ...
 
+## Install and Start the App
+
+### OneLiner
+1. `wget https://raw.githubusercontent.com/WebDaD/verbshaker/master/install.sh | sh`
+
+### Native
+1. `git clone https://github.com/WebDaD/verbshaker.git`
+2. `cd verbshaker`
+3. `npm run deploy`
+4. `npm start`
+
+### Docker
+1. `git clone https://github.com/WebDaD/verbshaker.git`
+2. `cd verbshaker`
+3. `docker build -t verbshaker .`
+4. `docker run verbshaker`
+
+## Resources
+Many Thanks to the developers of the Following Stuff:
+* [Bootstrap](http://getbootstrap.com/)
+* [Angular](https://angularjs.org/)
+* [node.js](https://nodejs.org/en/)
+* [font-awesome](http://fontawesome.io/)
+* [flag-icon-css](http://flag-icon-css.lip.is/)
+* [MaterialPalette](https://www.materialpalette.com/green/amber)
+* [AndroidAssetStudio](https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
+* [RealFaviconGenerator](http://realfavicongenerator.net/)
+* [TWBSColor](http://work.smarchal.com/twbscolor/)
+
 ## How to Support this
 Just checkout something and send a pull-request.  
 Or send me a single-language file if you prefer that.  
