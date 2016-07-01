@@ -1,0 +1,26 @@
+{
+  "name": "verbshaker",
+  "version": "0.1.0",
+  "description": "The one and only",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.2",
+    "angular-cookies": "^1.5.2",
+    "bootstrap": "*",
+    "font-awesome": "*"
+  },
+  "resolutions": {
+    "angular": "1.5.2"
+  }
+}

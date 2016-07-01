@@ -1,0 +1,58 @@
+{
+  "name": "verbshaker",
+  "version": "0.1.0",
+  "private": true,
+  "config": {
+    "port":8080,
+    "proverbs":"proverbs/"
+  },
+  "scripts": {
+    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html good-mocha-html-reporter raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli && echo '=> Installing dependend packages OK'",
+
+    "lint":"echo '=> Linting Files' && npm run lint:jade && npm run lint:less && npm run lint:js && npm run lint:json && echo '=> Linting Files OK'",
+      "lint:jade":"echo -n '==> Linting JADE ...' && jade-lint assets/html/*.jade && echo 'OK'",
+      "lint:less":"echo -n '==> Linting LESS ...' && lessc --lint assets/css/*.less && echo 'OK'",
+      "lint:js":"echo -n '==> Linting JS ...' && standard \"assets/js/*.js\" \"tests/*.js\" && echo 'OK'",
+      "lint:json":"echo -n '==> Linting JSON ...' && jsonlint-cli package.json && echo 'OK'",
+
+    "test":"echo '=> Performing Tests'  && istanbul cover _mocha -- tests/* -R good-mocha-html-reporter  && echo '=> Performing Tests OK'",
+
+    "doc":"echo '=> Creating Docs' && npm run doc:istanbul && npm run doc:markdown && npm run doc:mocha && npm run doc:raml && npm run doc:jsdoc && echo '=> Creating Docs OK'",
+      "doc:istanbul":"echo -n '==> Creating Coverage ...' && rsync -avq coverage/ doc/coverage/ && rm -rf coverage/ && echo 'OK'",
+      "doc:markdown":"echo -n '==> Creating HTML ...' && markdown-html doc/README.md -o doc/index.html && markdown-html README.md -o doc/readme.html && echo 'OK'",
+      "doc:mocha":"echo -n '==> Creating Testreports ...' && mv report.html doc/mocha.html && echo 'OK'",
+      "doc:raml":"echo -n '==> Creating API-Doc ...' && raml2html doc/api.raml > doc/rest.html && echo 'OK'",
+      "doc:jsdoc":"echo -n '==> Creating JSDoc ...' && jsdoc lib/* routes/* tests/* app.js -d doc/jsdoc/ && echo 'OK'",
+
+    "assets":"echo '=> Deploying Website Assets' && npm run assets:baseline && npm run assets:html && npm run assets:js && npm run assets:css && npm run assets:images && echo '=> Deploying Website Assets OK'",
+      "assets:baseline":"echo -n '==> Preparing Folders ...' && mkdir -p public && mkdir -p tmp && rm -rf public/* &&  npm run assets:cleantmp && mkdir -p public/templates && mkdir -p public/css && mkdir -p public/js && mkdir -p public/images && mkdir -p public/fonts && echo 'OK'",
+      "assets:html":"echo -n '==> Deploying HTML ...' && jade assets/html/index.jade -o public/ > /dev/null && echo 'OK'",
+      "assets:js":"echo -n '==> Deploying JS ...' && cp assets/js/*.js public/js/ && echo 'OK'",
+      "assets:css":"echo -n '==> Deploying CSS ...' && lessc assets/css/main.less public/css/main.css && echo 'OK'",
+      "assets:images":"echo -n '==> Deploying Images ...' && cp assets/images/* public/images/ 2>>/dev/null | true && echo 'OK'",
+      "assets:cleantmp":"rm -rf tmp/*",
+
+    "bower":"echo '=> Deploying Bower Assets' && echo '==> Bower install' && bower install --allow-root && npm run bower:bootstrap && npm run bower:font-awesome && npm run bower:glyphicons && npm run bower:angular && echo '=> Deploying Bower Assets OK'",
+      "bower:bootstrap":"echo -n '==> Deploying Bootstrap ...' && cp bower_components/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.min.css && echo 'OK'",
+      "bower:font-awesome":"echo -n '==> Deploying Font-Awesome ...' && cp bower_components/font-awesome/css/font-awesome.min.css public/css/font-awesome.min.css && echo 'OK'",
+      "bower:glyphicons":"echo -n '==> Deploying glyphicons ...' && cp bower_components/bootstrap/fonts/* public/fonts/ && echo 'OK'",
+      "bower:angular":"echo '==> Deploying angular' && cp bower_components/angular/angular.min.js public/js/angular.min.js && npm run bower:angular:cookies && echo '==> Deploying angular OK'",
+        "bower:angular:cookies":"echo -n '===> Deploying angular-cookies ...' && cp bower_components/angular-cookies/angular-cookies.min.js public/js/angular-cookies.min.js && echo 'OK'",
+
+    "verify": "echo '=> Verifying Deployment Process' && npm run verify:html && npm run verify:js && npm run verify:css && npm run verify:images && npm run verify:server && echo '=> Verifying Deployment Process OK'",
+      "verify:html": "echo -n '==> Verifying HTML ...' && test -e public/index.html && echo 'OK'",
+      "verify:js": "echo -n '==> Verifying JS ...' && test -e public/js/verbshaker.js && test -e public/js/angular.min.js && test -e public/js/angular-cookies.min.js && echo 'OK'",
+      "verify:css": "echo -n '==> Verifying CSS ...' && test -e public/css/main.css && test -e public/css/bootstrap.min.css && test -e public/css/font-awesome.min.css && echo 'OK'",
+      "verify:images": "echo -n '==> Verifying Images ...' && test -e public/images/android-chrome-192x192.png && test -e public/images/android-chrome-512x512.png && test -e public/images/apple-touch-icon.png && test -e public/images/browserconfig.xml && test -e public/images/favicon-16x16.png && test -e public/images/favicon-32x32.png && test -e public/images/favicon.ico && test -e public/images/manifest.json && test -e public/images/mstile-70x70.png && test -e public/images/mstile-144x144.png && test -e public/images/mstile-150x150.png && test -e public/images/safari-pinned-tab.svg && echo 'OK'",
+      "verify:server": "echo -n '==> Verifying Server ...' && test -e app.js && test -e libs/proverbs.js && test -e libs/proverbCollection.js && test -e routes/proverbs.js && test -e routes/index.js && echo 'OK'",
+
+    "deploy":"echo '=> Deploying myVerses' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+
+    "start": "pm2 start app.js --name myVerses"
+  },
+  "dependencies": {
+    "express": "*",
+    "nice-console": "*",
+    "serve-favicon":"*"
+  }
+}
