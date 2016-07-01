@@ -28,6 +28,7 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 Just checkout something and send a pull-request.  
 Or send me a single-language file if you prefer that.  
 Or create a nice Logo :-)
+Or even buy me a Coffee
 
 ## License
 This is free and unencumbered software released into the public domain.

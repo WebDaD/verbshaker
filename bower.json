@@ -18,7 +18,8 @@
     "angular": "^1.5.2",
     "angular-cookies": "^1.5.2",
     "bootstrap": "*",
-    "font-awesome": "*"
+    "font-awesome": "*",
+    "flag-icon-css": "*"
   },
   "resolutions": {
     "angular": "1.5.2"

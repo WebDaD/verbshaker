@@ -1,5 +1,5 @@
 doctype html
-html(lang='de', ng-app='verbshaker'  ng-controller="verbshakerController")
+html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-controllerAs="ctrl")
   head
     meta(name='author', content='Dominik Sigmund')
     meta(name='publisher', content='Dominik Sigmund')
@@ -18,6 +18,7 @@ html(lang='de', ng-app='verbshaker'  ng-controller="verbshakerController")
     meta(name='DC.Language', content='de')
     link(rel='stylesheet', href='css/bootstrap.min.css')
     link(rel='stylesheet', href='css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/flag-icon.min.css')
     link(rel='stylesheet', href='css/main.css')
     link(rel="apple-touch-icon", sizes="180x180", href="images/apple-touch-icon.png")
     link(rel="icon", type="image/png", href="images/favicon-32x32.png", sizes="32x32")
@@ -31,7 +32,7 @@ html(lang='de', ng-app='verbshaker'  ng-controller="verbshakerController")
     title VerbShaker
   body.no-skin
     nav.navbar.navbar-default
-      .container
+      .fluid-container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
             span.sr-only Toggle navigation
@@ -39,22 +40,25 @@ html(lang='de', ng-app='verbshaker'  ng-controller="verbshakerController")
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='#')
-            img(src="images/android-chrome-72x72.png")
+            img(src="images/android-chrome-192x192.png")
+            span Verbshaker
         #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            li(ng-show="username !== ''" ng-class="{ active: isActive('/myVerses')}")
-              a(href='#/myVerses') Meine Verse
-            li(ng-class="{ active: isActive('/bible')}")
-              a(href='#/bible') Bibel
-            li(ng-class="{ active: isActive('/stats')}")
-              a(href='#/stats') Statistiken
-            li(ng-show="username !== ''" ng-class="{ active: isActive('/profile')}")
-              a(href='#/profile') Profil
-          button.navbar-right.btn.btn-default.navbar-btn(type="button" ng-click="logout()" ng-show="username !== ''" style="margin-left:10px;") Logout
-          p.navbar-text.navbar-right(ng-show="username !== ''") Eingeloggt als {{username}}
+          ul.nav.navbar-nav.navbar-right
+            li(ng-class="{ active: ctrl.language === 'de'}")
+              a(href='#' ng-click="ctrl.changeLanguage('de')" title="de")
+                span.flag-icon.flag-icon-de
+            li(ng-class="{ active: ctrl.language === 'en'}")
+              a(href='#' ng-click="ctrl.changeLanguage('en')" title="en")
+                span.flag-icon.flag-icon-en
+            li(ng-class="{ active: ctrl.language === 'fr'}")
+              a(href='#' ng-click="ctrl.changeLanguage('fr')" title="fr")
+                span.flag-icon.flag-icon-fr
+            li(ng-class="{ active: ctrl.language === 'es'}")
+              a(href='#' ng-click="ctrl.changeLanguage('es')" title="es")
+                span.flag-icon.flag-icon-es
         // /.nav-collapse
-    .container
-      
+    #content.fluid-container
+      span#proverb(ng-click="ctrl.newProverb()") {{ctrl.proverb}}
 
 
     script(src='js/bootstrap-select.js')

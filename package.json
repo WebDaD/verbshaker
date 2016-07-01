@@ -32,8 +32,9 @@
       "assets:images":"echo -n '==> Deploying Images ...' && cp assets/images/* public/images/ 2>>/dev/null | true && echo 'OK'",
       "assets:cleantmp":"rm -rf tmp/*",
 
-    "bower":"echo '=> Deploying Bower Assets' && echo '==> Bower install' && bower install --allow-root && npm run bower:bootstrap && npm run bower:font-awesome && npm run bower:glyphicons && npm run bower:angular && echo '=> Deploying Bower Assets OK'",
+    "bower":"echo '=> Deploying Bower Assets' && echo '==> Bower install' && bower install --allow-root && npm run bower:bootstrap && npm run bower:flag-icons && npm run bower:font-awesome && npm run bower:glyphicons && npm run bower:angular && echo '=> Deploying Bower Assets OK'",
       "bower:bootstrap":"echo -n '==> Deploying Bootstrap ...' && cp bower_components/bootstrap/dist/css/bootstrap.min.css public/css/bootstrap.min.css && echo 'OK'",
+      "bower:flag-icons":"echo -n '==> Deploying Flag-Icons ...' && cp bower_components/flag-icon-css/css/flag-icon.min.css public/css/flag-icon.min.css && echo 'OK'",
       "bower:font-awesome":"echo -n '==> Deploying Font-Awesome ...' && cp bower_components/font-awesome/css/font-awesome.min.css public/css/font-awesome.min.css && echo 'OK'",
       "bower:glyphicons":"echo -n '==> Deploying glyphicons ...' && cp bower_components/bootstrap/fonts/* public/fonts/ && echo 'OK'",
       "bower:angular":"echo '==> Deploying angular' && cp bower_components/angular/angular.min.js public/js/angular.min.js && npm run bower:angular:cookies && echo '==> Deploying angular OK'",
