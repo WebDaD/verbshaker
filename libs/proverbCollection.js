@@ -47,6 +47,7 @@ function ProverbCollection (proverbpath, Proverb, callback) {
           self.fullRandom = fullRandom
           self.fullRandomSync = fullRandomSync
           callback(null, self)
+          return self
         }
       })
     }
@@ -54,7 +55,7 @@ function ProverbCollection (proverbpath, Proverb, callback) {
 }
 function languages (callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     var l = returnLanguages(this.proverbs)
     if (l.length < 1) {
@@ -76,7 +77,7 @@ function returnLanguages (proverbs) {
 }
 function all (language, callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     var proverbs = returnProverbs(this.proverbs, language)
     if (proverbs.length < 1) {
@@ -99,7 +100,7 @@ function returnProverbs (proverbs, language) {
 }
 function random (language, callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     var proverb = returnRandom(this.proverbs, language)
     if (proverb == null) {
@@ -122,7 +123,7 @@ function returnRandom (proverbs, language) {
 }
 function fullRandom (callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     var proverb = returnFullRandom(this.proverbs)
     if (proverb == null) {
