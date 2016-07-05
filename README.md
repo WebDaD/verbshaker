@@ -16,12 +16,12 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 
 ## List of Branches
 * master => node.js
-* php
-* bash
-* dpkg
-* electron
-* android
-* ios
+* php (tbd)
+* bash (tbd)
+* dpkg (tbd)
+* electron (tbd)
+* android (tbd)
+* ios (tbd)
 * ...
 
 ## Install and Start the App
@@ -85,16 +85,17 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 For more information, please refer to <http://unlicense.org/>
 
+---
 ## TODO:
 * tests
   * proverbCollection
   * proverbs
 * routes
-  * proverbs
+  * JSDOC proverbs
   * status
 * libs
-  * proverbs
-  * proverbCollection
+  * JSDOC proverbs
+  * JSDOC proverbCollection
 * docs
   * raml
   * jsstandard-icon
@@ -102,8 +103,7 @@ For more information, please refer to <http://unlicense.org/>
 * assets
   * html
     * index
-      * navbar for languages and title
-      * solid background with selector
-      * font in middle with selector
-  * js
-    * see file
+      * solid background with selector (cookie)
+      * font in middle with selector (cookie)
+      * http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning
+  * TEST JSDOC js

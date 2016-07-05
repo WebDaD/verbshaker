@@ -12,12 +12,12 @@
 * @param {object} proverbCollection - proverbCollection Object
 */
 module.exports = function (app, proverbCollection) {
-  // Load Bible Routes
+  // Load Verb Routes
   require('./proverbs.js')(app, proverbCollection)
 
   // Sends status information
   app.get('/status', function (req, res) {
-    // TODO: send status
+    // TODO: send status (languages with proverbs, uptime)
   })
   /** Middleware to Catch Errors
   * @param {object} err - Express.err Object

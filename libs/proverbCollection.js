@@ -13,7 +13,6 @@
 var fs = require('fs')
 var path = require('path')
 var async = require('async')
-var Proverbs = require('./proverbs.js')
 
 /** Creates a instance of class Bibles
  * @class ProverbCollection
@@ -21,7 +20,7 @@ var Proverbs = require('./proverbs.js')
  * @param {function} callback - Called after all is done
  * @returns {object} The Working Collection Object
  * */
-function ProverbCollection (proverbpath, callback) {
+function ProverbCollection (proverbpath, Proverb, callback) {
   var self = this
   self.proverbpath = proverbpath
   self.proverbs = []
@@ -34,39 +33,115 @@ function ProverbCollection (proverbpath, callback) {
         self.languages.push(files[i].replace('.csv', ''))
         files[i] = path.join(self.proverbpath, files[i])
       }
-      async.map(files, Proverbs, function (err, results) {
+      async.map(files, Proverb, function (err, results) {
         if (err) {
           callback(err)
         } else {
           self.proverbs = results
+          self.languages = languages
+          self.languagesSync = languagesSync
+          self.all = all
+          self.allSync = allSync
+          self.random = random
+          self.randomSync = randomSync
+          self.fullRandom = fullRandom
+          self.fullRandomSync = fullRandomSync
           callback(null, self)
         }
       })
     }
   })
 }
-ProverbCollection.prototype.languages = function (callback) {
-  // TODO: return all languages
+function languages (callback) {
+  if (typeof callback !== 'function') {
+    return null
+  } else {
+    var l = returnLanguages(this.proverbs)
+    if (l.length < 1) {
+      callback({status: 404, message: 'No Languages Found'})
+    } else {
+      callback(null, l)
+    }
+  }
 }
-ProverbCollection.prototype.languagesSync = function () {
-  // TODO: return all languages SYNC
+function languagesSync () {
+  return returnLanguages(this.proverbs)
 }
-ProverbCollection.prototype.all = function (language, callback) {
-  // TODO: return all proverbs for language
+function returnLanguages (proverbs) {
+  var languages = []
+  for (var i = 0; i < proverbs.length; i++) {
+    languages.push(proverbs[i].getLanguageSync())
+  }
+  return languages
 }
-ProverbCollection.prototype.allSync = function (language) {
-  // TODO: return all proverbs for language SYNC
+function all (language, callback) {
+  if (typeof callback !== 'function') {
+    return null
+  } else {
+    var proverbs = returnProverbs(this.proverbs, language)
+    if (proverbs.length < 1) {
+      callback({status: 404, message: 'No Proverbs for Language ' + language + ' Found'})
+    } else {
+      callback(null, proverbs)
+    }
+  }
 }
-ProverbCollection.prototype.random = function (language, callback) {
-  // TODO: return random shaken Proverb for language
+function allSync (language) {
+  return returnProverbs(this.proverbs, language)
 }
-ProverbCollection.prototype.randomSync = function (language) {
-  // TODO: return random shaken Proverb for language SYNC
+function returnProverbs (proverbs, language) {
+  for (var i = 0; i < proverbs.length; i++) {
+    if (proverbs[i].language === language) {
+      return proverbs[i].allSync()
+    }
+  }
+  return null
 }
-ProverbCollection.prototype.fullRandom = function (callback) {
-  // TODO: return random shaken Proverb for a random language
+function random (language, callback) {
+  if (typeof callback !== 'function') {
+    return null
+  } else {
+    var proverb = returnRandom(this.proverbs, language)
+    if (proverb == null) {
+      callback({status: 404, message: 'No random Proverb for Language ' + language + ' Found'})
+    } else {
+      callback(null, proverb)
+    }
+  }
 }
-ProverbCollection.prototype.fullRandomSync = function () {
-  // TODO: return random shaken Proverb for a random language SYNC
+function randomSync (language) {
+  return returnRandom(this.proverbs, language)
+}
+function returnRandom (proverbs, language) {
+  for (var i = 0; i < proverbs.length; i++) {
+    if (proverbs[i].language === language) {
+      return proverbs[i].randomSync()
+    }
+  }
+  return null
+}
+function fullRandom (callback) {
+  if (typeof callback !== 'function') {
+    return null
+  } else {
+    var proverb = returnFullRandom(this.proverbs)
+    if (proverb == null) {
+      callback({status: 404, message: 'No full random Proverb  Found'})
+    } else {
+      callback(null, proverb)
+    }
+  }
+}
+function fullRandomSync () {
+  return returnFullRandom(this.proverbs)
+}
+function returnFullRandom (proverbs) {
+  var rnd = Math.floor(Math.random() * (proverbs.length - 0 + 1)) + 0
+  for (var i = 0; i < proverbs.length; i++) {
+    if (i === rnd) {
+      return proverbs[i].randomSync()
+    }
+  }
+  return null
 }
 module.exports = ProverbCollection

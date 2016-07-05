@@ -22,12 +22,30 @@ module.exports = function (app, proverbCollection) {
     })
   })
   app.get('/api/random', function (req, res) {
-    // TODO return fullRandom
+    proverbCollection.fullRandom(function (error, verb) {
+      if (error) {
+        res.status(500).send(error)
+      } else {
+        res.status(200).send(verb)
+      }
+    })
   })
   app.get('/api/:language', function (req, res) {
-    // TODO return all proverbs for language
+    proverbCollection.all(req.params.language, function (error, verbs) {
+      if (error) {
+        res.status(500).send(error)
+      } else {
+        res.status(200).send(verbs)
+      }
+    })
   })
   app.get('/api/:language/random', function (req, res) {
-    // TODO return random shaken proverb for language
+    proverbCollection.random(req.params.language, function (error, verb) {
+      if (error) {
+        res.status(500).send(error)
+      } else {
+        res.status(200).send(verb)
+      }
+    })
   })
 }

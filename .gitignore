@@ -78,6 +78,10 @@ build/Release
 node_modules
 jspm_packages
 
+# Compiled Resources
+public
+tmp
+
 # Optional npm cache directory
 .npm
 

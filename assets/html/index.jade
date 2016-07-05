@@ -44,26 +44,24 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-cont
             span Verbshaker
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li(ng-class="{ active: ctrl.language === 'de'}")
-              a(href='#' ng-click="ctrl.language = 'de'" title="de")
+            li(ng-class="{ active: language === 'de'}")
+              a(href='#' ng-click="language = 'de'" title="de")
                 span.flag-icon.flag-icon-de
-            li(ng-class="{ active: ctrl.language === 'en'}")
-              a(href='#' ng-click="ctrl.language = 'en'" title="en")
-                span.flag-icon.flag-icon-en
-            li(ng-class="{ active: ctrl.language === 'fr'}")
-              a(href='#' ng-click="ctrl.language = 'fr'" title="fr")
+            li(ng-class="{ active: language === 'en'}")
+              a(href='#' ng-click="language = 'en'" title="en")
+                span.flag-icon.flag-icon-gb
+            li(ng-class="{ active: language === 'fr'}")
+              a(href='#' ng-click="language = 'fr'" title="fr")
                 span.flag-icon.flag-icon-fr
-            li(ng-class="{ active: ctrl.language === 'es'}")
-              a(href='#' ng-click="ctrl.language = 'es'" title="es")
+            li(ng-class="{ active: language === 'es'}")
+              a(href='#' ng-click="language = 'es'" title="es")
                 span.flag-icon.flag-icon-es
         // /.nav-collapse
     #content.fluid-container
-      span#proverb(ng-click="ctrl.newProverb()" title="Click to Shake...") {{ctrl.proverb}}
+      span#proverb(ng-click="newProverb()" title="Click to Shake...") {{proverb}}
 
-
-    script(src='js/bootstrap-select.js')
     // angular specific scripts
     script(src='js/angular.min.js')
     script(src='js/angular-cookies.min.js')
-    // myVerses specific scripts
+    // verbshaker specific scripts
     script(src='js/verbshaker.js')

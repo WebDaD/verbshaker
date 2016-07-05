@@ -14,20 +14,28 @@ var app = express()
 var server = require('http').createServer(app)
 var pack = require('./package.json')
 var favicon = require('serve-favicon')
+var ip = require('ip')
 var ProverbCollection = require('./libs/proverbCollection.js')
-
+var Proverb = require('./libs/proverbs.js')
 // Send public and docs
 app.use(express.static(__dirname + '/public'))
 app.use(express.static(__dirname + '/doc'))
 
 // Create Proverb-Service
-var proverbCollection = new ProverbCollection(pack.config.proverbs, function (err) {
+var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, function (err) {
   if (err) {
     console.error(err)
   } else {
     // Listen to Port
     server.listen(pack.config.port)
-
+    console.log('Startup Complete')
+    console.log('Using Proverbs-Folder ' + pack.config.proverbs)
+    console.log('Languages: ')
+    for (var i = 0; i < proverbCollection.languagesSync().length; i++) {
+      console.log(proverbCollection.languagesSync()[i])
+    }
+    console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
+    // console.log('Point Browser to http://' + ip.address() + ':' + pack.config.port)
     // Server favicon
     app.use(favicon(__dirname + '/public/images/favicon.ico'))
 
