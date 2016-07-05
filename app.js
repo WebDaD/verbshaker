@@ -19,7 +19,7 @@ var ProverbCollection = require('./libs/proverbCollection.js')
 var Proverb = require('./libs/proverbs.js')
 // Send public and docs
 app.use(express.static(__dirname + '/public'))
-app.use(express.static(__dirname + '/doc'))
+app.use('/docs', express.static(__dirname + '/docs'))
 
 // Create Proverb-Service
 var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, function (err) {

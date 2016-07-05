@@ -89,7 +89,6 @@ For more information, please refer to <http://unlicense.org/>
 ## TODO:
 * tests
   * proverbCollection
-  * proverbs
 * routes
   * JSDOC proverbs
   * status

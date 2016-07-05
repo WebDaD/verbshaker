@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Verbshaker</title>
+		<style>
+			/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+sup {
+   vertical-align: super;
+   font-size: smaller;
+}
+
+sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+/* Generic styles */
+body {
+	background: #f5f5f5;
+  color: #222;
+  font-family: 'Palatino Linotype','Book Antiqua',Palatino,FreeSerif,serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+ul, ol,
+p,
+code, pre,
+hr {
+	line-height: 1.5em;
+	margin: 1.5em 0 0.5em 0;
+}
+
+*:first-child {
+	margin-top: 0;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 3.5em;
+}
+
+h2 {
+	font-size: 2.5em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+h4 {
+	font-size: 1.5em
+}
+
+h5 {
+	font-size: 1.2em;
+}
+
+h6 {
+	font-size: 1em;
+}
+
+/* Lists */
+ul, ol {
+	padding-left: 2em;
+}
+
+ul {
+	list-style-type: disc;	
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+/* Code and pre */
+code, pre {
+	font-family: "Bitstream Vera Sans Mono", "Courier", monospace;
+}
+code {
+	background: none repeat scroll 0 0 #F8F8FF;
+  border: 1px solid #DEDEDE;
+  border-radius: 3px 	;
+  padding: 0 0.2em;
+}
+pre {
+	border-left: 5px solid #eee;
+	margin-left: 2em;	
+	padding-left: 1em;
+}
+pre > code {
+	background: transparent;
+	border: none;
+	padding: 0;
+}
+
+/* Links */
+a {
+  color: #261A3B;
+}
+
+a:visited {
+  color: #261A3B;
+}
+
+/* Inlines */
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
+/* Container */
+.container {
+	background: #FFF;
+	padding: 30px 50px;
+	margin: 0 auto;
+	width: 850px;
+}
+
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 id="verbshaker">Verbshaker</h1>
+<p>A Multilanguage / Multi-PROGRAMMING-language verbshaking Project.</p>
+<p>We have different branches with different code-languages.</p>
+<h2 id="what-is-a-verbshaker-">What is a Verbshaker?</h2>
+<p>This is simple:
+We found out, that in many languages, proverbs consist of two halfes. If you mixe them up, the result can be pretty nice and funny</p>
+<h2 id="list-of-languages">List of Languages</h2>
+<ul>
+<li>German</li>
+<li>English</li>
+<li>French</li>
+<li>Spanish</li>
+<li>...</li>
+</ul>
+<h2 id="list-of-branches">List of Branches</h2>
+<ul>
+<li>master =&gt; node.js</li>
+<li>php (tbd)</li>
+<li>bash (tbd)</li>
+<li>dpkg (tbd)</li>
+<li>electron (tbd)</li>
+<li>android (tbd)</li>
+<li>ios (tbd)</li>
+<li>...</li>
+</ul>
+<h2 id="install-and-start-the-app">Install and Start the App</h2>
+<h3 id="oneliner">OneLiner</h3>
+<ol>
+<li><code>wget https://raw.githubusercontent.com/WebDaD/verbshaker/master/install.sh | sh</code></li>
+</ol>
+<h3 id="native">Native</h3>
+<ol>
+<li><code>git clone https://github.com/WebDaD/verbshaker.git</code></li>
+<li><code>cd verbshaker</code></li>
+<li><code>npm run deploy</code></li>
+<li><code>npm start</code></li>
+</ol>
+<h3 id="docker">Docker</h3>
+<ol>
+<li><code>git clone https://github.com/WebDaD/verbshaker.git</code></li>
+<li><code>cd verbshaker</code></li>
+<li><code>docker build -t verbshaker .</code></li>
+<li><code>docker run verbshaker</code></li>
+</ol>
+<h2 id="resources">Resources</h2>
+<p>Many Thanks to the developers of the Following Stuff:</p>
+<ul>
+<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+<li><a href="https://angularjs.org/">Angular</a></li>
+<li><a href="https://nodejs.org/en/">node.js</a></li>
+<li><a href="http://fontawesome.io/">font-awesome</a></li>
+<li><a href="http://flag-icon-css.lip.is/">flag-icon-css</a></li>
+<li><a href="https://www.materialpalette.com/green/amber">MaterialPalette</a></li>
+<li><a href="https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html">AndroidAssetStudio</a></li>
+<li><a href="http://realfavicongenerator.net/">RealFaviconGenerator</a></li>
+<li><a href="http://work.smarchal.com/twbscolor/">TWBSColor</a></li>
+</ul>
+<h2 id="how-to-support-this">How to Support this</h2>
+<p>Just checkout something and send a pull-request.<br>Or send me a single-language file if you prefer that.<br>Or create a nice Logo :-)
+Or even buy me a Coffee</p>
+<h2 id="license">License</h2>
+<p>This is free and unencumbered software released into the public domain.</p>
+<p>Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.</p>
+<p>In jurisdictions that recognize copyright laws, the author or authors
+of this software dedicate any and all copyright interest in the
+software to the public domain. We make this dedication for the benefit
+of the public at large and to the detriment of our heirs and
+successors. We intend this dedication to be an overt act of
+relinquishment in perpetuity of all present and future rights to this
+software under copyright law.</p>
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+<p>For more information, please refer to <a href="http://unlicense.org/">http://unlicense.org/</a></p>
+<hr>
+<h2 id="todo-">TODO:</h2>
+<ul>
+<li>tests<ul>
+<li>proverbCollection</li>
+<li>proverbs</li>
+<li>JSDOC mock</li>
+</ul>
+</li>
+<li>routes<ul>
+<li>JSDOC proverbs</li>
+<li>status</li>
+</ul>
+</li>
+<li>libs<ul>
+<li>JSDOC proverbs</li>
+<li>JSDOC proverbCollection</li>
+</ul>
+</li>
+<li>docs<ul>
+<li>raml</li>
+<li>jsstandard-icon</li>
+<li>build-icons (npm, build)</li>
+</ul>
+</li>
+<li>assets<ul>
+<li>html<ul>
+<li>index<ul>
+<li>solid background with selector (cookie)</li>
+<li>font in middle with selector (cookie)</li>
+<li><a href="http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning">http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>TEST JSDOC js</li>
+</ul>
+</li>
+</ul>
+
+		</div>
+
+		<script></script>
+	</body>
+</html>

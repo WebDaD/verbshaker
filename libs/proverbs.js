@@ -10,30 +10,44 @@
  * @requires module:path
  */
 function Proverb (file, callback) {
-  var self = {}
-  var parse = require('csv-parse')
-  var fs = require('fs')
-  var path = require('path')
-  var parser = parse({delimiter: ';'}, function (err, data) {
-    if (err) {
-      callback(err)
-    } else {
-      self.proverbs = data
-      self.language = path.basename(file, '.csv')
-      self.getLanguage = getLanguage
-      self.getLanguageSync = getLanguageSync
-      self.all = all
-      self.allSync = allSync
-      self.random = random
-      self.randomSync = randomSync
-      callback(null, self)
+  if (typeof callback === 'undefined' || typeof callback !== 'function') {
+    throw new Error({status: 501, message: 'Callback missing'})
+  } else {
+    var self = {}
+    var parse = require('csv-parse')
+    var fs = require('fs')
+    var path = require('path')
+    try {
+      fs.accessSync(file, fs.F_OK)
+      if (fs.statSync(file).isFile()) {
+        var parser = parse({delimiter: ';'}, function (err, data) {
+          if (err) {
+            callback({status: 501, message: err})
+          } else {
+            self.proverbs = data
+            self.language = path.basename(file, '.csv')
+            self.getLanguage = getLanguage
+            self.getLanguageSync = getLanguageSync
+            self.all = all
+            self.allSync = allSync
+            self.random = random
+            self.randomSync = randomSync
+            callback(null, self)
+            return self
+          }
+        })
+        fs.createReadStream(file).pipe(parser)
+      } else {
+        callback({status: 501, message: file + ' is not a csv'})
+      }
+    } catch (e) {
+      throw e
     }
-  })
-  fs.createReadStream(file).pipe(parser)
+  }
 }
 function getLanguage (callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     callback(null, this.language)
   }
@@ -43,7 +57,7 @@ function getLanguageSync () {
 }
 function all (callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     if (this.proverbs.length > 0) {
       callback(null, this.proverbs)
@@ -57,12 +71,12 @@ function allSync () {
 }
 function random (callback) {
   if (typeof callback !== 'function') {
-    return null
+    throw new Error('No Callback')
   } else {
     var pv = returnRandom(this.proverbs)
     if (pv != null) {
       pv.language = this.language
-      callback(null, this.proverbs)
+      callback(null, pv)
     } else {
       callback({status: 404, message: 'No random Proverb found'})
     }
@@ -75,8 +89,8 @@ function randomSync () {
 }
 function returnRandom (proverbs) {
   if (proverbs.length > 0) {
-    var rnd_front = Math.floor(Math.random() * (proverbs.length - 0 + 1)) + 0
-    var rnd_back = Math.floor(Math.random() * (proverbs.length - 0 + 1)) + 0
+    var rnd_front = Math.floor(Math.random() * (proverbs.length - 1 + 1)) + 0
+    var rnd_back = Math.floor(Math.random() * (proverbs.length - 1 + 1)) + 0
     return {
       front: proverbs[rnd_front][0],
       back: proverbs[rnd_back][1],
