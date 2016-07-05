@@ -41,6 +41,10 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 3. `docker build -t verbshaker .`
 4. `docker run verbshaker`
 
+## Testing / docs
+Testing is done automatically uring deploy.
+You may see the Results at `http://<ip>:<port>/docs`
+
 ## Resources
 Many Thanks to the developers of the Following Stuff:
 * [Bootstrap](http://getbootstrap.com/)
@@ -105,4 +109,3 @@ For more information, please refer to <http://unlicense.org/>
       * solid background with selector (cookie)
       * font in middle with selector (cookie)
       * http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning
-  * TEST JSDOC js
