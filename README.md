@@ -112,13 +112,10 @@ You may see the Results at `http://<ip>:<port>/docs`
 ## TODO:
 * tests
   * proverbCollection
-* routes
-  * JSDOC proverbs
-* libs
-  * JSDOC proverbCollection
 * assets
   * html
     * index
       * solid background with selector (cookie)
       * font in middle with selector (cookie)
       * http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning
+			* share options
