@@ -116,8 +116,6 @@ You may see the Results at `http://<ip>:<port>/docs`
   * JSDOC proverbs
 * libs
   * JSDOC proverbCollection
-* docs
-  * raml -> models: http://json-schema.org/example1.html
 * assets
   * html
     * index

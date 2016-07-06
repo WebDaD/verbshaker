@@ -8,6 +8,8 @@ version: 2.0
 schemas:
   - Status: !include models/status.json
   - Proverb: !include models/proverb.json
+  - Proverbs: !include models/proverbs.json
+  - Languages: !include models/languages.json
 /status:
   displayName: Status
   description: Delivers Status-Information for verbshaker
@@ -17,6 +19,10 @@ schemas:
         body:
           application/json:
             schema: Status
+            example: |
+              {
+              "status":"running"
+              }
 /api:
   displayName: Main API Endpoint
   description: Here we go
@@ -28,7 +34,9 @@ schemas:
         200:
           body:
             application/json:
-              example: '[ "lang1", "lang2"]'
+              schema: Languages
+              example: |
+                [ "de", "en"]
   /random:
     displayName: Return a random Proverb from any language
     get:
@@ -36,6 +44,13 @@ schemas:
         200:
           body:
             application/json:
+              example: |
+                {
+                  front:"Morgenstund",
+                  back:"fängt den Wurm",
+                  combined:"Morgenstund fängt den Wurm",
+                  language:"de"
+                }
               schema: Proverb
   /{language}:
     displayName: Return all Proverbs for language
@@ -49,7 +64,12 @@ schemas:
         200:
           body:
             application/json:
-              example: '["Proverb1", "Proverb2"]'
+              schema: Proverbs
+              example: |
+                [
+                  ["Der frühe Vogel", "fängt den Wurm"],
+                  ["Morgenstund", "hat Gold im Mund"]
+                ]
     /random:
       displayName: Return a random proverb for the language
       get:
@@ -58,3 +78,10 @@ schemas:
             body:
               application/json:
                 schema: Proverb
+                example: |
+                  {
+                    front:"Morgenstund",
+                    back:"fängt den Wurm",
+                    combined:"Morgenstund fängt den Wurm",
+                    language:"de"
+                  }
