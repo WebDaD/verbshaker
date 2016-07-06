@@ -9,6 +9,13 @@
  * @requires module:fs
  * @requires module:path
  */
+
+ /** Creates a instance of class Proverb
+ * @class Proverb
+ * @param {string} file - A path to a proverb.csv
+ * @param {Proverb~contructorCallback} callback - A Callback with an error or the object
+ * @returns {Proverb} The Object
+ * */
 function Proverb (file, callback) {
   if (typeof callback === 'undefined' || typeof callback !== 'function') {
     throw new Error({status: 501, message: 'Callback missing'})
@@ -45,6 +52,11 @@ function Proverb (file, callback) {
     }
   }
 }
+/** get the Language of the Object
+ * @param {Proverb~languageCallback} callback - A Callback with the language
+ * @throws NoCallbackError
+ * @returns Nothing
+ * */
 function getLanguage (callback) {
   if (typeof callback !== 'function') {
     throw new Error('No Callback')
@@ -52,9 +64,17 @@ function getLanguage (callback) {
     callback(null, this.language)
   }
 }
+/** SYNC get the Language of the Object
+ * @returns {string} the Language of the Object
+ * */
 function getLanguageSync () {
   return this.language
 }
+/** get all proverbs of the Object
+ * @param {Proverb~allCallback} callback - A Callback with the proverbs
+ * @throws NoCallbackError
+ * @returns Nothing
+ * */
 function all (callback) {
   if (typeof callback !== 'function') {
     throw new Error('No Callback')
@@ -66,9 +86,17 @@ function all (callback) {
     }
   }
 }
+/** SYNC get all proverbs of the Object
+ * @returns {array} Array of Proverbs
+ * */
 function allSync () {
   return this.proverbs
 }
+/** get a random proverb of the Object
+ * @param {Proverb~randomCallback} callback - A Callback with the proverb
+ * @throws NoCallbackError
+ * @returns Nothing
+ * */
 function random (callback) {
   if (typeof callback !== 'function') {
     throw new Error('No Callback')
@@ -82,11 +110,26 @@ function random (callback) {
     }
   }
 }
+/** SYNC get a random proverb of the Object
+ * @returns {object} the proverb
+ * @returns {object.front} the front half of the proverb
+ * @returns {object.back} the back half of the proverb
+ * @returns {object.combined} the proverb
+ * @returns {object.language} the language of the proverb
+ * */
 function randomSync () {
   var pv = returnRandom(this.proverbs)
   pv.language = this.language
   return pv
 }
+/** get a random proverb from the list
+ * @param {array} proverbs - Array of Proverbs
+ * @returns {object} the proverb
+ * @returns {object.front} the front half of the proverb
+ * @returns {object.back} the back half of the proverb
+ * @returns {object.combined} the proverb
+ * @returns {object.language} the language of the proverb
+ * */
 function returnRandom (proverbs) {
   if (proverbs.length > 0) {
     var rnd_front = Math.floor(Math.random() * (proverbs.length - 1 + 1)) + 0
@@ -101,3 +144,39 @@ function returnRandom (proverbs) {
   }
 }
 module.exports = Proverb
+/**
+  * This callback is displayed as part of the Proverb class.
+  * @callback Proverb~contructorCallback
+  * @param {object} Error or null
+  * @param {object.status} Number of Error (Uses HTTP-Status)
+  * @param {object.message} Custom Error Message
+  * @param {Proverb} Instance of Class Proverb
+  */
+/**
+  * This callback is displayed as part of the Proverb class.
+  * @callback Proverb~languageCallback
+  * @param {object} Error or null
+  * @param {object.status} Number of Error (Uses HTTP-Status)
+  * @param {object.message} Custom Error Message
+  * @param {string} Language
+  */
+/**
+ * This callback is displayed as part of the Proverb class.
+ * @callback Proverb~allCallback
+ * @param {object} Error or null
+ * @param {object.status} Number of Error (Uses HTTP-Status)
+ * @param {object.message} Custom Error Message
+ * @param {array} Array of Proverbs
+ */
+ /**
+  * This callback is displayed as part of the Proverb class.
+  * @callback Proverb~randomCallback
+  * @param {object} Error or null
+  * @param {object.status} Number of Error (Uses HTTP-Status)
+  * @param {object.message} Custom Error Message
+  * @param {object} the proverb
+  * @param {object.front} the front half of the proverb
+  * @param {object.back} the back half of the proverb
+  * @param {object.combined} the proverb
+  * @param {object.language} the language of the proverb
+  */

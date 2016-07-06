@@ -3,6 +3,21 @@ A Multilanguage / Multi-PROGRAMMING-language verbshaking Project.
 
 We have different branches with different code-languages.
 
+- [Verbshaker](#verbshaker)
+	- [What is a Verbshaker?](#what-is-a-verbshaker)
+	- [List of Languages](#list-of-languages)
+	- [List of Branches](#list-of-branches)
+	- [Resources](#resources)
+	- [How to Support this](#how-to-support-this)
+	- [License](#license)
+	- [Install and Start the App](#install-and-start-the-app)
+		- [OneLiner](#oneliner)
+		- [Native](#native)
+		- [Docker](#docker)
+	- [Testing / docs](#testing-docs)
+	- [TODO:](#todo)
+
+
 ## What is a Verbshaker?
 This is simple:
 We found out, that in many languages, proverbs consist of two halfes. If you mixe them up, the result can be pretty nice and funny
@@ -15,35 +30,15 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * ...
 
 ## List of Branches
-* master => node.js
-* php (tbd)
-* bash (tbd)
-* dpkg (tbd)
-* electron (tbd)
-* android (tbd)
-* ios (tbd)
+* master => node.js + Angular
+* mmm (tbd) => MagicMirror² Module
+* php (tbd) => Website based on php
+* bash (tbd) => Simple BashCommand for Linux
+* dpkg (tbd) => installer for Ubuntu with commandline tool
+* electron (tbd) => simple app for different architectures
+* android (tbd) => native android app
+* ios (tbd) => native ios app
 * ...
-
-## Install and Start the App
-
-### OneLiner
-1. `wget https://raw.githubusercontent.com/WebDaD/verbshaker/master/install.sh | sh`
-
-### Native
-1. `git clone https://github.com/WebDaD/verbshaker.git`
-2. `cd verbshaker`
-3. `npm run deploy`
-4. `npm start`
-
-### Docker
-1. `git clone https://github.com/WebDaD/verbshaker.git`
-2. `cd verbshaker`
-3. `docker build -t verbshaker .`
-4. `docker run verbshaker`
-
-## Testing / docs
-Testing is done automatically uring deploy.
-You may see the Results at `http://<ip>:<port>/docs`
 
 ## Resources
 Many Thanks to the developers of the Following Stuff:
@@ -90,17 +85,42 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>
 
 ---
+This is the master-Branch.
+For other Branches, see Link above
+
+## Install and Start the App
+
+### OneLiner
+1. `wget https://raw.githubusercontent.com/WebDaD/verbshaker/master/install.sh | sh`
+
+### Native
+1. `git clone https://github.com/WebDaD/verbshaker.git`
+2. `cd verbshaker`
+3. `npm run deploy`
+4. `npm start`
+
+### Docker
+1. `git clone https://github.com/WebDaD/verbshaker.git`
+2. `cd verbshaker`
+3. `docker build -t verbshaker .`
+4. `docker run verbshaker`
+
+## Testing / docs
+Testing is done automatically uring deploy.
+You may see the Results at `http://<ip>:<port>/docs`
+---
 ## TODO:
+* known bugs
+  * utf8?
 * tests
   * proverbCollection
 * routes
   * JSDOC proverbs
   * status
 * libs
-  * JSDOC proverbs
   * JSDOC proverbCollection
 * docs
-  * raml
+  * raml -> models: http://json-schema.org/example1.html
   * jsstandard-icon
   * build-icons (npm, build)
 * assets

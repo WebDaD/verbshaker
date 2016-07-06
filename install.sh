@@ -7,7 +7,7 @@ echo 'Cloning Source Code into /opt/verbshaker'
 cd /opt
 sudo mkdir -p /opt/verbshaker
 sudo chmod 755 verbshaker
-cd myVerses
+cd verbshaker
 git clone https://github.com/WebDaD/verbshaker.git .
 echo 'Deploying App'
 sudo npm run deploy -s

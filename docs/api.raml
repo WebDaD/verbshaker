@@ -1,0 +1,60 @@
+#%RAML 0.8
+title: VerbShaker API
+baseUri: /
+mediaType: application/json
+protocols:
+  - HTTP
+version: 2.0
+schemas:
+  - Status: !include models/status.json
+  - Proverb: !include models/proverb.json
+/status:
+  displayName: Status
+  description: Delivers Status-Information for verbshaker
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Status
+/api:
+  displayName: Main API Endpoint
+  description: Here we go
+  /languages:
+    displayName: Languages
+    description: return Array of avaiable Languages
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: '[ "lang1", "lang2"]'
+  /random:
+    displayName: Return a random Proverb from any language
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              schema: Proverb
+  /{language}:
+    displayName: Return all Proverbs for language
+    uriParameters:
+      language:
+        example: de
+        displayName: Language Code
+        type: string
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example: '["Proverb1", "Proverb2"]'
+    /random:
+      displayName: Return a random proverb for the language
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: Proverb
