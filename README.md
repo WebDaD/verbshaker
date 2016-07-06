@@ -110,19 +110,14 @@ Testing is done automatically uring deploy.
 You may see the Results at `http://<ip>:<port>/docs`
 ---
 ## TODO:
-* known bugs
-  * utf8?
 * tests
   * proverbCollection
 * routes
   * JSDOC proverbs
-  * status
 * libs
   * JSDOC proverbCollection
 * docs
   * raml -> models: http://json-schema.org/example1.html
-  * jsstandard-icon
-  * build-icons (npm, build)
 * assets
   * html
     * index

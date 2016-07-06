@@ -17,7 +17,7 @@ module.exports = function (app, proverbCollection) {
 
   // Sends status information
   app.get('/status', function (req, res) {
-    // TODO: send status (languages with proverbs, uptime)
+    res.status(200).send({status: 'running'})
   })
   /** Middleware to Catch Errors
   * @param {object} err - Express.err Object
