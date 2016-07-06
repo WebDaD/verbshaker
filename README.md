@@ -30,7 +30,7 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * ...
 
 ## List of Branches
-* master => node.js + Angular
+* [master](https://github.com/WebDaD/verbshaker) => node.js + Angular
 * mmm (tbd) => MagicMirror² Module
 * php (tbd) => Website based on php
 * bash (tbd) => Simple BashCommand for Linux
