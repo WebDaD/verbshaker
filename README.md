@@ -23,10 +23,10 @@ This is simple:
 We found out, that in many languages, proverbs consist of two halfes. If you mixe them up, the result can be pretty nice and funny
 
 ## List of Languages
-* German
-* English
-* French
-* Spanish
+* [German](https://raw.githubusercontent.com/WebDaD/verbshaker/master/proverbs/de.csv)
+* [English](https://raw.githubusercontent.com/WebDaD/verbshaker/master/proverbs/en.csv)
+* [French](https://raw.githubusercontent.com/WebDaD/verbshaker/master/proverbs/fr.csv)
+* [Spanish](https://raw.githubusercontent.com/WebDaD/verbshaker/master/proverbs/es.csv)
 * ...
 
 ## List of Branches
