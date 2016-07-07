@@ -1,0 +1,23 @@
+.modal-header
+  h3.modal-title Share
+.modal-body
+  h2 {{ctrl.proverb}}
+  .row
+    .col-md-2
+      a.btn.btn-default(href="#" socialshare socialshare-provider="twitter" socialshare-text="{{ctrl.proverb}}" socialshare-hashtags="verbshaker" socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-twitter(aria-hidden="true")
+        span  Twitter
+    .col-md-2
+      a.btn.btn-default(href="#" socialshare socialshare-provider="email" socialshare-subject="VerbShaker!" socialshare-body="{{ctrl.proverb}}" role="button")
+        i.fa.fa-envelope(aria-hidden="true")
+        span  E-Mail
+    .col-md-2
+      a.btn.btn-default(href="#" socialshare socialshare-provider="facebook" socialshare-type="feed" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-facebook(aria-hidden="true")
+        span  Facebook
+    .col-md-2
+      a.btn.btn-default(href="#" socialshare socialshare-provider="linkedin" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-source="Verbshaker" role="button")
+        i.fa.fa-linkedin(aria-hidden="true")
+        span  LinkedIn
+.modal-footer
+  button.btn.btn-primary.hidden-print(type="button" ng-click="ok()") Close

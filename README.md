@@ -119,9 +119,25 @@ You may see the Results at `http://<ip>:<port>/docs`
   * proverbCollection
 * assets
   * html
-    * index
-			* vertical center span with font
-			* share options
-			* shake option to change verb
-			* (cookie) new verb every x seconds (setInterval, clearInterval)
+    * share
+			* google
+			* pinterest
+			* tumblr
+			* reddit
+			* stumbleupon
+			* buffer
+			* digg
+			* delicious
+			* vk
+			* ok
+			* pocket
+			* wordpress
+			* flipboard
+			* xing
+			* hackernews
+			* evernote
+			* whatsapp
+			* telegram
+			* viber
+			* skype		
 	* minimize, combine all with package command (also update index.jade to reflect that!)

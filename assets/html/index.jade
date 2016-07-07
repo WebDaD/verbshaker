@@ -20,6 +20,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     link(rel='stylesheet', href='css/font-awesome.min.css')
     link(rel='stylesheet', href='css/flag-icon.min.css')
     link(rel='stylesheet', href='css/colorpicker.css')
+    link(rel='stylesheet', href='css/angular-tooltips.min.css')
     link(rel='stylesheet', href='css/main.css')
     link(rel="apple-touch-icon", sizes="180x180", href="images/apple-touch-icon.png")
     link(rel="icon", type="image/png", href="images/favicon-32x32.png", sizes="32x32")
@@ -44,27 +45,37 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
             img(src="images/android-chrome-192x192.png")
             span Verbshaker
         #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav.navbar-right
+          ul.nav.navbar-nav.navbar-left
             li(ng-class="{ active:  $parent.language === lang}" ng-repeat="lang in languages")
-              a(href='#' ng-click="$parent.language = lang" title="{{lang}}")
-                span.flag-icon(ng-class="'flag-icon-'+lang")
+              a(href='#' ng-click="$parent.language = lang")
+                span.flag-icon(ng-class="'flag-icon-'+lang" tooltips tooltip-template="Change to {{lang}}")
+          ul.nav.navbar-nav.navbar-right
+            li.navbar-btn(style="width:50px; margin-right: 50px;" )
+              h-number(tooltips tooltip-template="Autoupdate every x Seconds. 0 is off" value="autoupdate" min="0" max="60" step="1")
             li
-              button.btn.btn-default.navbar-btn(colorpicker="hex" type="button" ng-model="backgroundcolor") Background
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="backgroundcolor") Background
             li
-              button.btn.btn-default.navbar-btn(colorpicker="hex" type="button" ng-model="fontcolor") Font
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="fontcolor") Font
             li
-              button.btn.btn-default.navbar-btn(type="button" ng-click="hiddenNav = true") Hide Navbar
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Hide this Navbar" style="margin-left:10px" type="button" ng-click="hiddenNav = true") Hide Navbar
         // /.nav-collapse
     #content.fluid-container
-      span#proverb(ng-click="newProverb()" title="Click to Shake..." ng-style="{'color':fontcolor}") {{proverb}}
+      span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor}") {{proverb}}
     button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false") Show Navbar
-    // bootstrap js
+    button#share.btn.btn-default.ghost-button(ng-click="openModal()") Share
+    // common js
     script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')
+    script(src='js/shake.js')
     // angular specific scripts
     script(src='js/angular.min.js')
     script(src='js/angular-cookies.min.js')
     script(src='js/angular-animate.min.js')
+    script(src='js/angular-socialshare.min.js')
+    script(src='js/angular-tooltips.min.js')
+    script(src='js/ui-bootstrap-tpls.min.js')
+    script(src='js/angular-number-picker.min.js')
     script(src='js/bootstrap-colorpicker-module.js')
     // verbshaker specific scripts
     script(src='js/verbshaker.js')
+    script(src='js/share.js')

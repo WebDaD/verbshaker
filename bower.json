@@ -18,10 +18,15 @@
     "angular": "^1.5.2",
     "angular-cookies": "^1.5.2",
     "angular-animate": "^1.5.2",
+    "angular-bootstrap": "^1.2.5",
+    "angular-number-picker":"*",
+    "angular-tooltips":"*",
+    "angularjs-socialshare":"*",
     "angular-bootstrap-colorpicker":"*",
     "bootstrap": "*",
     "font-awesome": "*",
-    "flag-icon-css": "*"
+    "flag-icon-css": "*",
+    "shake.js":"*"
   },
   "resolutions": {
     "angular": "1.5.2"
