@@ -120,24 +120,6 @@ You may see the Results at `http://<ip>:<port>/docs`
 * assets
   * html
     * share
-			* google
-			* pinterest
-			* tumblr
-			* reddit
-			* stumbleupon
-			* buffer
-			* digg
-			* delicious
-			* vk
-			* ok
-			* pocket
-			* wordpress
-			* flipboard
-			* xing
-			* hackernews
-			* evernote
-			* whatsapp
-			* telegram
 			* viber
 			* skype		
 	* minimize, combine all with package command (also update index.jade to reflect that!)

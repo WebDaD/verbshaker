@@ -2,22 +2,78 @@
   h3.modal-title Share
 .modal-body
   h2 {{ctrl.proverb}}
-  .row
+  .row.row-grid
     .col-md-2
-      a.btn.btn-default(href="#" socialshare socialshare-provider="twitter" socialshare-text="{{ctrl.proverb}}" socialshare-hashtags="verbshaker" socialshare-url="http://verbshaker.com" role="button")
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="twitter" socialshare-text="{{ctrl.proverb}}" socialshare-hashtags="verbshaker" socialshare-url="http://verbshaker.com" role="button")
         i.fa.fa-twitter(aria-hidden="true")
         span  Twitter
     .col-md-2
-      a.btn.btn-default(href="#" socialshare socialshare-provider="email" socialshare-subject="VerbShaker!" socialshare-body="{{ctrl.proverb}}" role="button")
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="email" socialshare-subject="VerbShaker!" socialshare-body="{{ctrl.proverb}}" role="button")
         i.fa.fa-envelope(aria-hidden="true")
         span  E-Mail
     .col-md-2
-      a.btn.btn-default(href="#" socialshare socialshare-provider="facebook" socialshare-type="feed" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="facebook" socialshare-type="feed" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
         i.fa.fa-facebook(aria-hidden="true")
         span  Facebook
     .col-md-2
-      a.btn.btn-default(href="#" socialshare socialshare-provider="linkedin" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-source="Verbshaker" role="button")
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="linkedin" socialshare-description="{{ctrl.proverb}}" socialshare-text="Shaken Verb" socialshare-url="http://verbshaker.com" socialshare-source="Verbshaker" role="button")
         i.fa.fa-linkedin(aria-hidden="true")
         span  LinkedIn
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="reddit" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-reddit(aria-hidden="true")
+        span  Reddit
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="digg" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-digg(aria-hidden="true")
+        span  Digg
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="delicious" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-delicious(aria-hidden="true")
+        span  Delicious
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="stumbleupon" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-stumbleupon(aria-hidden="true")
+        span  StumpleUpon
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="pinterest" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-pinterest(aria-hidden="true")
+        span  Pinterest
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="tumblr" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-tumblr(aria-hidden="true")
+        span  Tumblr
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="wordpress" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-wordpress(aria-hidden="true")
+        span  Wordpress
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="evernote" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-sticky-note(aria-hidden="true")
+        span  Evernote
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="hackernews" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-hacker-news(aria-hidden="true")
+        span  HackerNews
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="xing" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" socialshare-media="http://verbshaker.com/images/android-chrome-512x512.png" role="button")
+        i.fa.fa-xing(aria-hidden="true")
+        span  Xing
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="whatsapp" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-whatsapp(aria-hidden="true")
+        span  WhatsApp
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="telegram" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-paper-plane(aria-hidden="true")
+        span  Telegram
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="viber" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-viber(aria-hidden="true")
+        span  Viber
+    .col-md-2
+      a.btn.btn-default.btn-block(href="#" socialshare socialshare-provider="skype" socialshare-text="{{ctrl.proverb}}"  socialshare-url="http://verbshaker.com" role="button")
+        i.fa.fa-skype(aria-hidden="true")
+        span  Skype
 .modal-footer
   button.btn.btn-primary.hidden-print(type="button" ng-click="ok()") Close
