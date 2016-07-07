@@ -27,25 +27,30 @@ function Proverb (file, callback) {
     try {
       fs.accessSync(file, fs.F_OK)
       if (fs.statSync(file).isFile()) {
-        var parser = parse({delimiter: ';'}, function (err, data) {
+        fs.readFile(file, 'utf8', function (err, csv) {
           if (err) {
-            callback({status: 501, message: err})
+            return callback({status: 501, message: err})
           } else {
-            self.proverbs = data
-            self.language = path.basename(file, '.csv')
-            self.getLanguage = getLanguage
-            self.getLanguageSync = getLanguageSync
-            self.all = all
-            self.allSync = allSync
-            self.random = random
-            self.randomSync = randomSync
-            callback(null, self)
-            return self
+            parse(csv, {delimiter: ';', skip_empty_lines: true}, function (err, data) {
+              if (err) {
+                return callback({status: 501, message: err})
+              } else {
+                self.proverbs = data
+                self.language = path.basename(file, '.csv')
+                self.getLanguage = getLanguage
+                self.getLanguageSync = getLanguageSync
+                self.all = all
+                self.allSync = allSync
+                self.random = random
+                self.randomSync = randomSync
+                callback(null, self)
+                return self
+              }
+            })
           }
         })
-        fs.createReadStream(file).pipe(parser)
       } else {
-        callback({status: 501, message: file + ' is not a csv'})
+        return callback({status: 501, message: file + ' is not a csv'})
       }
     } catch (e) {
       throw e

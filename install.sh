@@ -1,5 +1,6 @@
-echo 'myVerses Installer started'
+echo 'Verbshaker Installer started'
 echo 'Installing System Requirements'
+sudo apt-get update
 sudo apt-get install -y git build-essential
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs

@@ -1,5 +1,5 @@
 doctype html
-html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-controllerAs="ctrl")
+html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
   head
     meta(name='author', content='Dominik Sigmund')
     meta(name='publisher', content='Dominik Sigmund')
@@ -19,6 +19,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-cont
     link(rel='stylesheet', href='css/bootstrap.min.css')
     link(rel='stylesheet', href='css/font-awesome.min.css')
     link(rel='stylesheet', href='css/flag-icon.min.css')
+    link(rel='stylesheet', href='css/colorpicker.css')
     link(rel='stylesheet', href='css/main.css')
     link(rel="apple-touch-icon", sizes="180x180", href="images/apple-touch-icon.png")
     link(rel="icon", type="image/png", href="images/favicon-32x32.png", sizes="32x32")
@@ -30,8 +31,8 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-cont
     meta(name="msapplication-config", content="images/browserconfig.xml")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title VerbShaker
-  body.no-skin
-    nav.navbar.navbar-default
+  body.no-skin(ng-style="{'background-color':backgroundcolor}")
+    nav.navbar.navbar-default(ng-show="!hiddenNav")
       .fluid-container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -44,24 +45,26 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController" ng-cont
             span Verbshaker
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
-            li(ng-class="{ active: language === 'de'}")
-              a(href='#' ng-click="language = 'de'" title="de")
-                span.flag-icon.flag-icon-de
-            li(ng-class="{ active: language === 'en'}")
-              a(href='#' ng-click="language = 'en'" title="en")
-                span.flag-icon.flag-icon-gb
-            li(ng-class="{ active: language === 'fr'}")
-              a(href='#' ng-click="language = 'fr'" title="fr")
-                span.flag-icon.flag-icon-fr
-            li(ng-class="{ active: language === 'es'}")
-              a(href='#' ng-click="language = 'es'" title="es")
-                span.flag-icon.flag-icon-es
+            li(ng-class="{ active:  $parent.language === lang}" ng-repeat="lang in languages")
+              a(href='#' ng-click="$parent.language = lang" title="{{lang}}")
+                span.flag-icon(ng-class="'flag-icon-'+lang")
+            li
+              button.btn.btn-default.navbar-btn(colorpicker="hex" type="button" ng-model="backgroundcolor") Background
+            li
+              button.btn.btn-default.navbar-btn(colorpicker="hex" type="button" ng-model="fontcolor") Font
+            li
+              button.btn.btn-default.navbar-btn(type="button" ng-click="hiddenNav = true") Hide Navbar
         // /.nav-collapse
     #content.fluid-container
-      span#proverb(ng-click="newProverb()" title="Click to Shake...") {{proverb}}
-
+      span#proverb(ng-click="newProverb()" title="Click to Shake..." ng-style="{'color':fontcolor}") {{proverb}}
+    button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false") Show Navbar
+    // bootstrap js
+    script(src='js/jquery.min.js')
+    script(src='js/bootstrap.min.js')
     // angular specific scripts
     script(src='js/angular.min.js')
     script(src='js/angular-cookies.min.js')
+    script(src='js/angular-animate.min.js')
+    script(src='js/bootstrap-colorpicker-module.js')
     // verbshaker specific scripts
     script(src='js/verbshaker.js')

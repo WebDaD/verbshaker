@@ -38,6 +38,10 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * electron (tbd) => simple app for different architectures
 * android (tbd) => native android app
 * ios (tbd) => native ios app
+* jquery (tbd) => jquery plugin
+* angular (tbd) => angularjs-plugin
+* chrome (tbd) => Extension for chrome
+* wordpress (tbd) => plugin for wordpress
 * ...
 
 ## Resources
@@ -85,8 +89,9 @@ OTHER DEALINGS IN THE SOFTWARE.
 For more information, please refer to <http://unlicense.org/>
 
 ---
+# MASTER
 This is the master-Branch.
-For other Branches, see Link above
+For other Branches, see [Links above](#list-of-branches)
 
 ## Install and Start the App
 
@@ -115,7 +120,8 @@ You may see the Results at `http://<ip>:<port>/docs`
 * assets
   * html
     * index
-      * solid background with selector (cookie)
-      * font in middle with selector (cookie)
-      * http://stackoverflow.com/questions/14741988/twitter-bootstrap-navbar-with-angular-js-collapse-not-functioning
+			* vertical center span with font
 			* share options
+			* shake option to change verb
+			* (cookie) new verb every x seconds (setInterval, clearInterval)
+	* minimize, combine all with package command (also update index.jade to reflect that!)
