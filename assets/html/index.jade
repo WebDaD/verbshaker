@@ -16,12 +16,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     meta(name='DC.Rights', content='Dominik Sigmund')
     meta(name='DC.Description', content='')
     meta(name='DC.Language', content='de')
-    link(rel='stylesheet', href='css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/font-awesome.min.css')
-    link(rel='stylesheet', href='css/flag-icon.min.css')
-    link(rel='stylesheet', href='css/colorpicker.css')
-    link(rel='stylesheet', href='css/angular-tooltips.min.css')
-    link(rel='stylesheet', href='css/main.css')
+    link(rel='stylesheet', href='css/main.min.css')
     link(rel="apple-touch-icon", sizes="180x180", href="images/apple-touch-icon.png")
     link(rel="icon", type="image/png", href="images/favicon-32x32.png", sizes="32x32")
     link(rel="icon", type="image/png", href="images/favicon-16x16.png", sizes="16x16")
@@ -63,8 +58,6 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
       span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor}") {{proverb}}
     button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false") Show Navbar
     button#share.btn.btn-default.ghost-button(ng-click="openModal()") Share
-    // common js
-    script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')
     script(src='js/shake.js')
     // angular specific scripts

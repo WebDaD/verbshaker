@@ -15,7 +15,6 @@ We have different branches with different code-languages.
 		- [Native](#native)
 		- [Docker](#docker)
 	- [Testing / docs](#testing-docs)
-	- [TODO:](#todo)
 
 
 ## What is a Verbshaker?
@@ -93,6 +92,8 @@ For more information, please refer to <http://unlicense.org/>
 This is the master-Branch.
 For other Branches, see [Links above](#list-of-branches)
 
+[Demo is running here](http://)
+
 ## Install and Start the App
 
 ### OneLiner
@@ -117,5 +118,4 @@ You may see the Results at `http://<ip>:<port>/docs`
 ## TODO:
 * tests
   * proverbCollection
-* assets	
-	* minimize, combine all with package command (also update index.jade to reflect that!)
+	* bug in proverbs on fail csv
