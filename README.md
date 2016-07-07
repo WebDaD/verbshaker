@@ -117,9 +117,5 @@ You may see the Results at `http://<ip>:<port>/docs`
 ## TODO:
 * tests
   * proverbCollection
-* assets
-  * html
-    * share
-			* viber
-			* skype		
+* assets	
 	* minimize, combine all with package command (also update index.jade to reflect that!)
