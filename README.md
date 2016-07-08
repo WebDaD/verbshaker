@@ -119,3 +119,8 @@ You may see the Results at `http://<ip>:<port>/docs`
 * tests
   * proverbCollection
 	* bug in proverbs on fail csv
+* improvements
+	* animate hide and show of navbar, modal, Text change (hide, change, show)
+	* fontnt select
+	* font size
+	* image generator for sharing
