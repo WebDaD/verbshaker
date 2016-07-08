@@ -86,7 +86,7 @@
     if (typeof $cookies.get('verbshaker-autoupdate') !== 'undefined') {
       $scope.autoupdate = parseInt($cookies.get('verbshaker-autoupdate'), 10)
     } else {
-      $scope.autoupdate = 5
+      $scope.autoupdate = 0
     }
     if (autoupdateInterval) {
       clearInterval(autoupdateInterval)
