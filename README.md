@@ -33,9 +33,14 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * mmm (tbd) => MagicMirror² Module
 * php (tbd) => Website based on php
 * bash (tbd) => Simple BashCommand for Linux
+* perl (tbd) => perl commandline tool
+* java-cli (tbd) => java commandline tool
+* java-gui (tbd) => java with a gui in qt
+* c (tbd) => commandline tool in c
 * dpkg (tbd) => installer for Ubuntu with commandline tool
 * electron (tbd) => simple app for different architectures
 * android (tbd) => native android app
+* firetv (tbd) => app for firetv
 * ios (tbd) => native ios app
 * jquery (tbd) => jquery plugin
 * angular (tbd) => angularjs-plugin
@@ -119,8 +124,12 @@ You may see the Results at `http://<ip>:<port>/docs`
 * tests
   * proverbCollection
 	* bug in proverbs on fail csv
+	* loadtest (with nice html output)
+	* selenium, acquit test of api /gui
 * improvements
 	* animate hide and show of navbar, modal, Text change (hide, change, show)
-	* fontnt select
+	* font-family select
 	* font size
 	* image generator for sharing
+	* use intro.js to explain stuff, show button only with no cookie
+	* new Proverb-Button (by cookie, checkbox)
