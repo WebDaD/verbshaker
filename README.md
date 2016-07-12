@@ -1,3 +1,4 @@
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 # Verbshaker
 A Multilanguage / Multi-PROGRAMMING-language verbshaking Project.
 
@@ -133,3 +134,6 @@ You may see the Results at `http://<ip>:<port>/docs`
 	* image generator for sharing
 	* use intro.js to explain stuff, show button only with no cookie
 	* new Proverb-Button (by cookie, checkbox)
+	* use helmet for security reasons
+	* check with retire
+	* check with nsp
