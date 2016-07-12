@@ -10,7 +10,8 @@ Readme-Datei des Projects:
 [JSDoc](jsdoc/index.html "Link")
 
 ## Test
-[Report](mocha.html "Link")
+[Unit-Tests](mocha.html "Link")
+[Load-Tests](loadtest.html "Link")
 
 ## Coverage
 [Code-Coverage by Istanbul](coverage/lcov-report/index.html "Link")

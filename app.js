@@ -35,7 +35,7 @@ var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, fun
       console.log(proverbCollection.languagesSync()[i])
     }
     console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
-    // console.log('Point Browser to http://' + ip.address() + ':' + pack.config.port)
+    console.log('Point Browser to http://' + ip.address() + ':' + pack.config.port)
     // Server favicon
     app.use(favicon(__dirname + '/public/images/favicon.ico'))
 

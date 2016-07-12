@@ -118,15 +118,15 @@ For other Branches, see [Links above](#list-of-branches)
 4. `docker run verbshaker`
 
 ## Testing / docs
-Testing is done automatically uring deploy.
-You may see the Results at `http://<ip>:<port>/docs`
+Testing is done automatically during deploy.  
+You may see the Results at `http://<server>:<port>/docs`
+
 ---
 ## TODO:
 * tests
-  * proverbCollection
 	* bug in proverbs on fail csv
-	* loadtest (with nice html output)
-	* selenium, acquit test of api /gui
+	* selenium test gui
+	* test api with superagent
 * improvements
 	* animate hide and show of navbar, modal, Text change (hide, change, show)
 	* font-family select

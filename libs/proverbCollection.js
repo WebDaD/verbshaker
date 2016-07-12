@@ -22,37 +22,49 @@ var async = require('async')
  * @returns {object} The Working Collection Object
  * */
 function ProverbCollection (proverbpath, Proverb, callback) {
-  var self = this
-  self.proverbpath = proverbpath
-  self.proverbs = []
-  self.languages = []
-  fs.readdir(proverbpath, function (err, files) {
-    if (err) {
-      callback(err)
+  if (typeof callback !== 'function') {
+    throw new Error('No Callback')
+  } else {
+    if (typeof Proverb === 'undefined') {
+      callback({status: 501, message: 'No ProverbClass given'})
     } else {
-      for (var i = 0; i < files.length; i++) {
-        self.languages.push(files[i].replace('.csv', ''))
-        files[i] = path.join(self.proverbpath, files[i])
-      }
-      async.map(files, Proverb, function (err, results) {
+      var self = this
+      self.proverbpath = proverbpath
+      self.proverbs = []
+      self.languages = []
+      fs.readdir(proverbpath, function (err, files) {
         if (err) {
           callback(err)
         } else {
-          self.proverbs = results
-          self.languages = languages
-          self.languagesSync = languagesSync
-          self.all = all
-          self.allSync = allSync
-          self.random = random
-          self.randomSync = randomSync
-          self.fullRandom = fullRandom
-          self.fullRandomSync = fullRandomSync
-          callback(null, self)
-          return self
+          for (var i = 0; i < files.length; i++) {
+            self.languages.push(files[i].replace('.csv', ''))
+            files[i] = path.join(self.proverbpath, files[i])
+          }
+          if (files.length < 1) {
+            callback({status: 404, message: 'No Proverbs in folder found given'})
+          } else {
+            async.map(files, Proverb, function (err, results) {
+              if (err) {
+                callback(err)
+              } else {
+                self.proverbs = results
+                self.languages = languages
+                self.languagesSync = languagesSync
+                self.all = all
+                self.allSync = allSync
+                self.random = random
+                self.randomSync = randomSync
+                self.fullRandom = fullRandom
+                self.fullRandomSync = fullRandomSync
+                callback(null, self)
+                return self
+              }
+            })
+          }
         }
       })
     }
-  })
+  }
 }
 /** Return all Languages
  * @param {ProverbCollection~languagesCallback} callback - A Callback with the language
@@ -99,7 +111,7 @@ function all (language, callback) {
     throw new Error('No Callback')
   } else {
     var proverbs = returnProverbs(this.proverbs, language)
-    if (proverbs.length < 1) {
+    if (!proverbs || proverbs.length < 1) {
       callback({status: 404, message: 'No Proverbs for Language ' + language + ' Found'})
     } else {
       callback(null, proverbs)
@@ -241,15 +253,15 @@ module.exports = ProverbCollection
  * @param {object.message} Custom Error Message
  * @param {array} Array of Proverbs
  */
- /**
-  * This callback is displayed as part of the ProverbCollection class.
-  * @callback ProverbCollection~randomCallback
-  * @param {object} Error or null
-  * @param {object.status} Number of Error (Uses HTTP-Status)
-  * @param {object.message} Custom Error Message
-  * @param {object} the proverb
-  * @param {object.front} the front half of the proverb
-  * @param {object.back} the back half of the proverb
-  * @param {object.combined} the proverb
-  * @param {object.language} the language of the proverb
-  */
+/**
+ * This callback is displayed as part of the ProverbCollection class.
+ * @callback ProverbCollection~randomCallback
+ * @param {object} Error or null
+ * @param {object.status} Number of Error (Uses HTTP-Status)
+ * @param {object.message} Custom Error Message
+ * @param {object} the proverb
+ * @param {object.front} the front half of the proverb
+ * @param {object.back} the back half of the proverb
+ * @param {object.combined} the proverb
+ * @param {object.language} the language of the proverb
+ */
