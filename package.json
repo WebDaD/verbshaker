@@ -7,7 +7,7 @@
     "proverbs":"proverbs/"
   },
   "scripts": {
-    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html good-mocha-html-reporter raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli && echo '=> Installing dependend packages OK'",
+    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html mochawesome raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli && echo '=> Installing dependend packages OK'",
 
     "lint":"echo '=> Linting Files' && npm run lint:jade && npm run lint:less && npm run lint:js && npm run lint:json && echo '=> Linting Files OK'",
       "lint:jade":"echo -n '==> Linting JADE ...' && jade-lint assets/html/*.jade && echo 'OK'",
@@ -16,13 +16,13 @@
       "lint:json":"echo -n '==> Linting JSON ...' && jsonlint-cli package.json && echo 'OK'",
 
     "test":"echo '=> Performing Tests'  && npm run test:code && npm run test:loadtest  && echo '=> Performing Tests OK'",
-      "test:code":"echo '==> Mocha' && istanbul cover _mocha -- tests/*.js -R good-mocha-html-reporter && echo 'OK'",
+      "test:code":"echo '==> Mocha' && istanbul cover _mocha -- tests/*.js -R mochawesome && echo 'OK'",
       "test:loadtest":"echo '==> LoadTest' && node tests/loadtest.js && echo 'OK'",
 
     "doc":"echo '=> Creating Docs' && npm run doc:istanbul && npm run doc:markdown && npm run doc:mocha && npm run doc:raml && npm run doc:jsdoc && echo '=> Creating Docs OK'",
-      "doc:istanbul":"echo -n '==> Creating Coverage ...' && rsync -avq coverage/ docs/coverage/ && rm -rf coverage/ && echo 'OK'",
+      "doc:istanbul":"echo -n '==> Copying Coverage ...' && rsync -avq coverage/ docs/coverage/ && rm -rf coverage/ && echo 'OK'",
       "doc:markdown":"echo -n '==> Creating HTML ...' && markdown-html docs/README.md -o docs/index.html && markdown-html README.md -o docs/readme.html && echo 'OK'",
-      "doc:mocha":"echo -n '==> Creating Testreports ...' && mv report.html docs/mocha.html && echo 'OK'",
+      "doc:mocha":"echo -n '==> Copying Testreports ...' && rsync -avq mochawesome-reports/ docs/mochawesome-reports/ && rm -rf mochawesome-reports/ && echo 'OK'",
       "doc:raml":"echo -n '==> Creating API-Doc ...' && raml2html docs/api.raml > docs/api.html && echo 'OK'",
       "doc:jsdoc":"echo -n '==> Creating JSDoc ...' && jsdoc libs/* routes/* tests/* app.js -d docs/jsdoc/ && echo 'OK'",
 
