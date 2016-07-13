@@ -38,6 +38,9 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * java-cli (tbd) => java commandline tool
 * java-gui (tbd) => java with a gui in qt
 * c (tbd) => commandline tool in c
+* batch (tbd) => Simple BatchCommand for Windows
+* powershell (tbd) => powershell for Windows
+* winform (tbd) => C#.NET winform
 * dpkg (tbd) => installer for Ubuntu with commandline tool
 * electron (tbd) => simple app for different architectures
 * android (tbd) => native android app
