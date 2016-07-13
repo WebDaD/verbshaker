@@ -120,6 +120,21 @@ For other Branches, see [Links above](#list-of-branches)
 3. `docker build -t verbshaker .`
 4. `docker run verbshaker`
 
+## Edit the config
+The configuration is found in `package.json`  
+To change it, simply edit the values and then restart the app via `npm run restart`  
+_Example Config_:
+```json
+"config": {
+	"port":8080,
+	"proverbs":"proverbs/",
+	"show_docs":true
+}
+```
+* **port**: the Web-Port where the app will be found
+* **proverbs**: The path where the csv-files with the proverbs live
+* **show_docs**: if set to false, the docs-path will not be avaiable (good for production)
+
 ## Testing / docs
 Testing is done automatically during deploy.  
 You may see the Results at `http://<server>:<port>/docs`
