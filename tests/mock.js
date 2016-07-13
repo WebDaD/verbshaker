@@ -15,6 +15,8 @@ function Mock () {
   self.getObject = getObject
   self.lockDatabase = lockDatabase
   self.unlockDatabase = unlockDatabase
+  self.lockFile = lockFile
+  self.unlockFile = unlockFile
   self.save = save
   self.restore = restore
   self.objectsToDatabase = objectsToDatabase
@@ -55,12 +57,22 @@ function getObject (id) {
 }
 function lockDatabase () {
   if (typeof this.folder !== 'undefined') {
-    fs.chmodSync(this.folder, '0444')
+    fs.chmodSync(this.folder, '0000')
   }
 }
 function unlockDatabase () {
   if (typeof this.folder !== 'undefined') {
     fs.chmodSync(this.folder, '0777')
+  }
+}
+function lockFile (file) {
+  if (typeof file !== 'undefined') {
+    fs.chmodSync(file, '0000')
+  }
+}
+function unlockFile (file) {
+  if (typeof file !== 'undefined') {
+    fs.chmodSync(file, '0777')
   }
 }
 function save (name) {

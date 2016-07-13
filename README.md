@@ -127,7 +127,6 @@ You may see the Results at `http://<server>:<port>/docs`
 ---
 ## TODO:
 * tests
-	* unit-tests: coverage not complete
 	* selenium test gui
 	* test api with superagent
 * improvements
