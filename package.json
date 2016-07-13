@@ -68,11 +68,13 @@
       "security:libs": "echo -n '==> Verifying Libs ...' && retire && echo 'OK'",
       "security:nsp": "echo -n '==> Verifying Vulnerabilities ...' && nsp check && echo 'OK'",
 
-    "deploy":"echo '=> Deploying verbshaker' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run minify && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+    "deploy":"echo '=> Deploying verbshaker' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run minify && npm run verify && npm run security && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
     "start": "pm2 start app.js --name verbshaker",
     "restart": "pm2 restart verbshaker",
-    "stop":"pm2 stop verbshaker"
+    "stop":"pm2 stop verbshaker",
+
+    "publish":"sh publish.sh"
   },
   "dependencies": {
     "express": "*",

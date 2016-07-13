@@ -114,11 +114,21 @@ For other Branches, see [Links above](#list-of-branches)
 3. `npm run deploy`
 4. `npm start`
 
+### Copy to different Machine
+1. `git clone https://github.com/WebDaD/verbshaker.git`
+2. `cd verbshaker`
+3. `npm run deploy`
+4. `npm run publish -- user:password@server:path`
+5. Connect to Server
+6. `cd path`
+7. `npm run start`
+
 ### Docker
 1. `git clone https://github.com/WebDaD/verbshaker.git`
 2. `cd verbshaker`
 3. `docker build -t verbshaker .`
 4. `docker run verbshaker`
+
 
 ## Edit the config
 The configuration is found in `package.json`  
