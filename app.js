@@ -14,6 +14,7 @@ var app = express()
 var server = require('http').createServer(app)
 var pack = require('./package.json')
 var favicon = require('serve-favicon')
+var helmet = require('helmet')
 var ip = require('ip')
 var ProverbCollection = require('./libs/proverbCollection.js')
 var Proverb = require('./libs/proverbs.js')
@@ -22,6 +23,7 @@ app.use(express.static(__dirname + '/public'))
 if (pack.config.show_docs) {
   app.use('/docs', express.static(__dirname + '/docs'))
 }
+app.use(helmet())
 // Create Proverb-Service
 var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, function (err) {
   if (err) {

@@ -68,7 +68,7 @@ Many Thanks to the developers of the Following Stuff:
 Just checkout something and send a pull-request.  
 Or send me a single-language file if you prefer that.  
 Or create a nice Logo :-)
-Or even buy me a Coffee
+[Or even buy me a Coffee](https://www.paypal.me/DSigmund/2)
 
 ## License
 This is free and unencumbered software released into the public domain.
@@ -142,7 +142,7 @@ You may see the Results at `http://<server>:<port>/docs`
 ---
 ## TODO:
 * tests
-	* selenium test gui
+	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
 	* animate hide and show of navbar, modal, Text change (hide, change, show)
 	* font-family select
@@ -150,6 +150,5 @@ You may see the Results at `http://<server>:<port>/docs`
 	* image generator for sharing
 	* use intro.js to explain stuff, show button only with no cookie
 	* new Proverb-Button (by cookie, checkbox)
-	* use helmet for security reasons
-	* check with retire
-	* check with nsp
+	* update jquery (from 1.7)
+	* second deploy which only installs minimals and does not test, lint or anything.... also use for Docker

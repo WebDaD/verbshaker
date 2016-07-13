@@ -8,7 +8,7 @@
     "show_docs":true
   },
   "scripts": {
-    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html mochawesome raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli && echo '=> Installing dependend packages OK'",
+    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html mochawesome raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli retire nsp && echo '=> Installing dependend packages OK'",
 
     "lint":"echo '=> Linting Files' && npm run lint:jade && npm run lint:less && npm run lint:js && npm run lint:json && echo '=> Linting Files OK'",
       "lint:jade":"echo -n '==> Linting JADE ...' && jade-lint assets/html/*.jade && echo 'OK'",
@@ -64,6 +64,10 @@
       "verify:images": "echo -n '==> Verifying Images ...' && test -e public/images/android-chrome-192x192.png && test -e public/images/android-chrome-512x512.png && test -e public/images/apple-touch-icon.png && test -e public/images/browserconfig.xml && test -e public/images/favicon-16x16.png && test -e public/images/favicon-32x32.png && test -e public/images/favicon.ico && test -e public/images/manifest.json && test -e public/images/mstile-150x150.png && test -e public/images/safari-pinned-tab.svg && echo 'OK'",
       "verify:server": "echo -n '==> Verifying Server ...' && test -e app.js && test -e libs/proverbs.js && test -e libs/proverbCollection.js && test -e routes/proverbs.js && test -e routes/index.js && echo 'OK'",
 
+    "security": "echo '=> Verifying Security Process' && npm run security:libs && npm run security:nsp && echo '=> Verifying Security Process OK'",
+      "security:libs": "echo -n '==> Verifying Libs ...' && retire && echo 'OK'",
+      "security:nsp": "echo -n '==> Verifying Vulnerabilities ...' && nsp check && echo 'OK'",
+
     "deploy":"echo '=> Deploying verbshaker' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run minify && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
     "start": "pm2 start app.js --name verbshaker",
@@ -80,6 +84,7 @@
     "jsonfile":"*",
     "loadtest":"*",
     "superagent":"*",
-    "http-status":"*"
+    "http-status":"*",
+    "helmet":"*"
   }
 }
