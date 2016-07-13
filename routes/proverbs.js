@@ -15,7 +15,7 @@ module.exports = function (app, proverbCollection) {
   app.get('/api/languages', function (req, res) {
     proverbCollection.languages(function (error, languages) {
       if (error) {
-        res.status(500).send(error)
+        res.status(error.status).send(error)
       } else {
         res.status(200).send(languages)
       }
@@ -24,7 +24,7 @@ module.exports = function (app, proverbCollection) {
   app.get('/api/random', function (req, res) {
     proverbCollection.fullRandom(function (error, verb) {
       if (error) {
-        res.status(500).send(error)
+        res.status(error.status).send(error)
       } else {
         res.status(200).send(verb)
       }
@@ -33,7 +33,7 @@ module.exports = function (app, proverbCollection) {
   app.get('/api/:language', function (req, res) {
     proverbCollection.all(req.params.language, function (error, verbs) {
       if (error) {
-        res.status(500).send(error)
+        res.status(error.status).send(error)
       } else {
         res.status(200).send(verbs)
       }
@@ -42,7 +42,7 @@ module.exports = function (app, proverbCollection) {
   app.get('/api/:language/random', function (req, res) {
     proverbCollection.random(req.params.language, function (error, verb) {
       if (error) {
-        res.status(500).send(error)
+        res.status(error.status).send(error)
       } else {
         res.status(200).send(verb)
       }

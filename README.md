@@ -128,7 +128,6 @@ You may see the Results at `http://<server>:<port>/docs`
 ## TODO:
 * tests
 	* selenium test gui
-	* test api with superagent
 * improvements
 	* animate hide and show of navbar, modal, Text change (hide, change, show)
 	* font-family select
