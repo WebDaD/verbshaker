@@ -16,12 +16,13 @@ var pack = require('./package.json')
 var favicon = require('serve-favicon')
 var helmet = require('helmet')
 var ip = require('ip')
+var path = require('path')
 var ProverbCollection = require('./libs/proverbCollection.js')
 var Proverb = require('./libs/proverbs.js')
 // Send public and docs
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(path.join(__dirname, '/public')))
 if (pack.config.show_docs) {
-  app.use('/docs', express.static(__dirname + '/docs'))
+  app.use('/docs', express.static(path.join(__dirname, '/docs')))
 }
 app.use(helmet())
 // Create Proverb-Service
@@ -40,7 +41,7 @@ var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, fun
     console.log(pack.name + '@' + pack.version + ' running on Port ' + pack.config.port)
     console.log('Point Browser to http://' + ip.address() + ':' + pack.config.port)
     // Server favicon
-    app.use(favicon(__dirname + '/public/images/favicon.ico'))
+    app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
 
     // Routes
     require('./routes')(app, proverbCollection)

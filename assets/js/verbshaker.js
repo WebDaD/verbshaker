@@ -1,6 +1,6 @@
 /* global angular, Shake */
 ;(function () {
-  angular.module('verbshaker', ['ngCookies', 'colorpicker.module', 'ngNumberPicker', '720kb.tooltips', '720kb.socialshare', 'ui.bootstrap']).controller('verbshakerController', ['$http', '$cookies', '$scope', '$window', '$uibModal', function ($http, $cookies, $scope, $window, $uibModal) {
+  angular.module('verbshaker', ['ngCookies', 'colorpicker.module', 'ngNumberPicker', '720kb.tooltips', '720kb.socialshare', 'ui.bootstrap', 'ngAnimate']).controller('verbshakerController', ['$http', '$cookies', '$scope', '$window', '$uibModal', function ($http, $cookies, $scope, $window, $uibModal) {
     // Get Languages
     $scope.languages = ''
     $http.get('/api/languages', {}).then(function (data) {

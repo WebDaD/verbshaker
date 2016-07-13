@@ -154,9 +154,12 @@ You may see the Results at `http://<server>:<port>/docs`
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
-	* animate hide and show of navbar, modal, Text change (hide, change, show)
-	* font-family select
-	* font size
+	* animation
+		* modal
+		* Text change (hide, change, show)
+	* customizing
+		* font-family select
+		* font size
+		* new Proverb-Button
 	* image generator for sharing
 	* use intro.js to explain stuff, show button only with no cookie
-	* new Proverb-Button (by cookie, checkbox)
