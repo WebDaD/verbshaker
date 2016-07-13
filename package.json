@@ -9,6 +9,7 @@
   },
   "scripts": {
     "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html mochawesome raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli retire nsp && echo '=> Installing dependend packages OK'",
+    "global_minimal":"echo '=> Installing dependend packages' && npm install -g bower pm2 less jade html-minifier uglify-js uglifycss imagemin-cli && echo '=> Installing dependend packages OK'",
 
     "lint":"echo '=> Linting Files' && npm run lint:jade && npm run lint:less && npm run lint:js && npm run lint:json && echo '=> Linting Files OK'",
       "lint:jade":"echo -n '==> Linting JADE ...' && jade-lint assets/html/*.jade && echo 'OK'",
@@ -69,6 +70,8 @@
       "security:nsp": "echo -n '==> Verifying Vulnerabilities ...' && nsp check && echo 'OK'",
 
     "deploy":"echo '=> Deploying verbshaker' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run minify && npm run verify && npm run security && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+
+    "deploy_minimal":"echo '=> MINIMAL Deploying verbshaker' && npm run global_minimal && npm install && npm run assets && npm run bower && npm run minify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
     "start": "pm2 start app.js --name verbshaker",
     "restart": "pm2 restart verbshaker",

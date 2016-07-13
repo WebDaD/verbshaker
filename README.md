@@ -111,7 +111,7 @@ For other Branches, see [Links above](#list-of-branches)
 ### Native
 1. `git clone https://github.com/WebDaD/verbshaker.git`
 2. `cd verbshaker`
-3. `npm run deploy`
+3. `npm run deploy` (Or `npm run deploy_minimal` to skip a lot of stuff)
 4. `npm start`
 
 ### Copy to different Machine
@@ -160,5 +160,3 @@ You may see the Results at `http://<server>:<port>/docs`
 	* image generator for sharing
 	* use intro.js to explain stuff, show button only with no cookie
 	* new Proverb-Button (by cookie, checkbox)
-	* update jquery (from 1.7)
-	* second deploy which only installs minimals and does not test, lint or anything.... also use for Docker
