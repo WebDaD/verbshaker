@@ -28,7 +28,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title VerbShaker
   body.no-skin(ng-style="{'background-color':backgroundcolor}")
-    nav.navbar.navbar-default(ng-show="!hiddenNav")
+    nav.navbar.navbar-default.navbar-fixed-top(ng-show="!hiddenNav")
       .fluid-container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -39,13 +39,13 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
           a.navbar-brand(href='#')
             img(src="images/android-chrome-192x192.png")
             span Verbshaker
-        #navbar.collapse.navbar-collapse
+        #navbar.collapse.navbar-collapse(style="max-height: 500px;")
           ul.nav.navbar-nav.navbar-left
             li(ng-class="{ active:  $parent.language === lang}" ng-repeat="lang in languages")
               a(href='#' ng-click="$parent.language = lang")
                 span.flag-icon(ng-class="'flag-icon-'+lang" tooltips tooltip-template="Change to {{lang}}")
-          ul.nav.navbar-nav.navbar-right
-            li.navbar-btn(style="width:50px; margin-right: 50px;" )
+          ul.nav.navbar-nav.navbar-right(style="margin-right: 15px;")
+            li.navbar-btn(style="width:50px; margin-right: 50px;margin-left: 10px;" )
               h-number(tooltips tooltip-template="Autoupdate every x Seconds. 0 is off" value="autoupdate" min="0" max="60" step="1")
             li
               button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="backgroundcolor") Background
@@ -54,10 +54,12 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
             li
               button.btn.btn-default.navbar-btn(tooltips tooltip-template="Hide this Navbar" style="margin-left:10px" type="button" ng-click="hiddenNav = true") Hide Navbar
         // /.nav-collapse
-    #content.fluid-container
-      span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor}") {{proverb}}
+    #content.fluid-container.container-table
+      .row.vertical-center-row
+        span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor}" ng-show="proverb.length > 0") {{proverb}}
     button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false") Show Navbar
     button#share.btn.btn-default.ghost-button(ng-click="openModal()") Share
+    script(src='js/jquery.min.js')
     script(src='js/bootstrap.min.js')
     script(src='js/shake.js')
     // angular specific scripts

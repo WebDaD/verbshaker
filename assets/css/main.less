@@ -5,6 +5,7 @@
 @import "ghost-button.less";
 @import "animations.less";
 
+
 /* navbar brand */
 .navbar-brand {
   display: flex;
@@ -19,6 +20,18 @@
 body {
   background: black;
 }
+/* center proverb */
+html, body, .container-table {
+    height: 100%;
+    width: 100%;
+}
+.container-table {
+    display: table;
+}
+.vertical-center-row {
+    display: table-cell;
+    vertical-align: middle;
+}
 #proverb {
   color: white;
   cursor:pointer;
@@ -26,11 +39,7 @@ body {
   text-align: center;
   vertical-align: middle;
   font-size: 12vmin;
-  position: fixed;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 #showNavbar {
   position:absolute;

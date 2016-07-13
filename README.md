@@ -154,9 +154,6 @@ You may see the Results at `http://<server>:<port>/docs`
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
-	* animation
-		* modal
-		* Text change (hide, change, show)
 	* customizing
 		* font-family select
 		* font size
