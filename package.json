@@ -5,11 +5,13 @@
   "config": {
     "port":8080,
     "proverbs":"proverbs/",
-    "show_docs":true
+    "show_docs":false
   },
   "scripts": {
-    "global":"echo '=> Installing dependend packages' && npm install -g bower pm2 mocha standard istanbul markdown-html mochawesome raml2html jsdoc less jade html-minifier uglify-js uglifycss imagemin-cli jade-lint jsonlint-cli retire nsp && echo '=> Installing dependend packages OK'",
-    "global_minimal":"echo '=> Installing dependend packages' && npm install -g bower pm2 less jade html-minifier uglify-js uglifycss imagemin-cli && echo '=> Installing dependend packages OK'",
+    "binaries":"echo '=> Installing Binaries' && npm install -g bower pm2 less jade html-minifier uglify-js uglifycss imagemin-cli json && echo '=> Installing Binaries OK'",
+    "binaries:extended":"echo '=> Installing extended Binaries' && npm install -g mocha standard istanbul markdown-html mochawesome raml2html jsdoc jade-lint jsonlint-cli retire nsp && echo '=> Installing extended Binaries'",
+
+    "configure":"sh configure.sh",
 
     "lint":"echo '=> Linting Files' && npm run lint:jade && npm run lint:less && npm run lint:js && npm run lint:json && echo '=> Linting Files OK'",
       "lint:jade":"echo -n '==> Linting JADE ...' && jade-lint assets/html/*.jade && echo 'OK'",
@@ -28,29 +30,30 @@
       "doc:raml":"echo -n '==> Creating API-Doc ...' && raml2html docs/api.raml > docs/api.html && echo 'OK'",
       "doc:jsdoc":"echo -n '==> Creating JSDoc ...' && jsdoc libs/* routes/* tests/* app.js -d docs/jsdoc/ && echo 'OK'",
 
-    "assets":"echo '=> Deploying Website Assets' && npm run assets:baseline && npm run assets:html && npm run assets:js && npm run assets:css && npm run assets:images && echo '=> Deploying Website Assets OK'",
-      "assets:baseline":"echo -n '==> Preparing Folders ...' && mkdir -p public && mkdir -p tmp && rm -rf public/* &&  npm run assets:cleantmp && mkdir -p public/css && mkdir -p public/flags && mkdir -p public/js && mkdir -p public/images && mkdir -p public/fonts && mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/images && mkdir -p tmp/html && echo 'OK'",
-      "assets:html":"echo -n '==> Deploying HTML ...' && jade assets/html/index.jade -o tmp/html/ > /dev/null && jade assets/html/share.jade -o tmp/html/ > /dev/null && echo 'OK'",
-      "assets:js":"echo -n '==> Deploying JS ...' && cp assets/js/*.js tmp/js/ && echo 'OK'",
-      "assets:css":"echo -n '==> Deploying CSS ...' && lessc assets/css/main.less tmp/css/main.css && echo 'OK'",
-      "assets:images":"echo -n '==> Deploying Images ...' && cp assets/images/* tmp/images/ 2>>/dev/null | true && echo 'OK'",
-      "assets:cleantmp":"rm -rf tmp/*",
+    "bower":"echo '=> Downloading Bower Assets' && echo '==> Bower install' && bower install --allow-root && echo '=> Downloading Bower Assets OK'",
 
-    "bower":"echo '=> Deploying Bower Assets' && echo '==> Bower install' && bower install --allow-root && npm run bower:bootstrap && npm run bower:jquery && npm run bower:shakejs && npm run bower:flag-icons && npm run bower:font-awesome && npm run bower:glyphicons && npm run bower:angular && echo '=> Deploying Bower Assets OK'",
-      "bower:bootstrap":"echo -n '==> Deploying Bootstrap ...' && cp bower_components/bootstrap/dist/css/bootstrap.min.css tmp/css/bootstrap.min.css && cp bower_components/bootstrap/dist/js/bootstrap.min.js tmp/js/bootstrap.min.js && echo 'OK'",
-      "bower:jquery":"echo -n '==> Deploying jQuery ...' && cp bower_components/jquery/dist/jquery.min.js tmp/js/jquery.min.js && echo 'OK'",
-      "bower:shakejs":"echo -n '==> Deploying shake.js ...' && cp bower_components/shake.js/shake.js tmp/js/shake.js && echo 'OK'",
-      "bower:flag-icons":"echo -n '==> Deploying Flag-Icons ...' && cp bower_components/flag-icon-css/css/flag-icon.min.css tmp/css/flag-icon.min.css && cp -r bower_components/flag-icon-css/flags/* public/flags && echo 'OK'",
-      "bower:font-awesome":"echo -n '==> Deploying Font-Awesome ...' && cp bower_components/font-awesome/css/font-awesome.min.css tmp/css/font-awesome.min.css && cp bower_components/font-awesome/fonts/* public/fonts/ && echo 'OK'",
-      "bower:glyphicons":"echo -n '==> Deploying glyphicons ...' && cp bower_components/bootstrap/fonts/* public/fonts/ && echo 'OK'",
-      "bower:angular":"echo '==> Deploying angular' && cp bower_components/angular/angular.min.js public/js/angular.min.js && npm run bower:angular:cookies && npm run bower:angular:colorpicker && npm run bower:angular:numberpicker && npm run bower:angular:tooltips && npm run bower:angular:animate && npm run bower:angular:socialshare && npm run bower:angular:bootstrap && echo '==> Deploying angular OK'",
-        "bower:angular:cookies":"echo -n '===> Deploying angular-cookies ...' && cp bower_components/angular-cookies/angular-cookies.min.js tmp/js/angular-cookies.min.js && echo 'OK'",
-        "bower:angular:numberpicker":"echo -n '===> Deploying angular-numberpicker ...' && cp bower_components/angular-number-picker/dist/angular-number-picker.min.js tmp/js/angular-number-picker.min.js && echo 'OK'",
-        "bower:angular:colorpicker":"echo -n '===> Deploying angular-bootstrap-colorpicker ...' && cp bower_components/angular-bootstrap-colorpicker/css/colorpicker.css tmp/css/colorpicker.css && cp bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js tmp/js/bootstrap-colorpicker-module.js && echo 'OK'",
-        "bower:angular:tooltips":"echo -n '===> Deploying angular-tooltips ...' && cp bower_components/angular-tooltips/dist/angular-tooltips.min.css tmp/css/angular-tooltips.min.css && cp bower_components/angular-tooltips/dist/angular-tooltips.min.js tmp/js/angular-tooltips.min.js && echo 'OK'",
-        "bower:angular:animate":"echo -n '===> Deploying angular-animate ...' && cp bower_components/angular-animate/angular-animate.min.js tmp/js/angular-animate.min.js && echo 'OK'",
-        "bower:angular:socialshare":"echo -n '===> Deploying angular-socialshare ...' && cp bower_components/angularjs-socialshare/dist/angular-socialshare.min.js tmp/js/angular-socialshare.min.js && echo 'OK'",
-        "bower:angular:bootstrap":"echo -n '===> Deploying angular-bootstrap ...' && cp bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js tmp/js/ui-bootstrap-tpls.min.js && echo 'OK'",
+    "prepare":"echo '=> Preparing Website Assets' && npm run prepare:baseline && npm run prepare:html && npm run prepare:js && npm run prepare:css && npm run prepare:images && npm run prepare:bootstrap && npm run prepare:jquery && npm run prepare:shakejs && npm run prepare:flag-icons && npm run prepare:font-awesome && npm run prepare:glyphicons && npm run prepare:angular && echo '=> Preparing Website Assets OK'",
+      "prepare:baseline":"echo -n '==> Preparing Folders ...' && mkdir -p public && mkdir -p tmp && rm -rf public/* &&  rm -rf tmp/* && mkdir -p public/css && mkdir -p public/flags && mkdir -p public/js && mkdir -p public/images && mkdir -p public/fonts && mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/images && mkdir -p tmp/html && echo 'OK'",
+      "prepare:html":"echo -n '==> Preparing HTML ...' && jade assets/html/index.jade -o tmp/html/ > /dev/null && jade assets/html/share.jade -o tmp/html/ > /dev/null && echo 'OK'",
+      "prepare:js":"echo -n '==> Preparing JS ...' && cp assets/js/*.js tmp/js/ && echo 'OK'",
+      "prepare:css":"echo -n '==> Preparing CSS ...' && lessc assets/css/main.less tmp/css/main.css && echo 'OK'",
+      "prepare:images":"echo -n '==> Preparing Images ...' && cp assets/images/* tmp/images/ 2>>/dev/null | true && echo 'OK'",
+      "prepare:bootstrap":"echo -n '==> Preparing Bootstrap ...' && cp bower_components/bootstrap/dist/css/bootstrap.min.css tmp/css/bootstrap.min.css && cp bower_components/bootstrap/dist/js/bootstrap.min.js tmp/js/bootstrap.min.js && echo 'OK'",
+      "prepare:jquery":"echo -n '==> Preparing jQuery ...' && cp bower_components/jquery/dist/jquery.min.js tmp/js/jquery.min.js && echo 'OK'",
+      "prepare:shakejs":"echo -n '==> Preparing shake.js ...' && cp bower_components/shake.js/shake.js tmp/js/shake.js && echo 'OK'",
+      "prepare:flag-icons":"echo -n '==> Preparing Flag-Icons ...' && cp bower_components/flag-icon-css/css/flag-icon.min.css tmp/css/flag-icon.min.css && cp -r bower_components/flag-icon-css/flags/* public/flags && echo 'OK'",
+      "prepare:font-awesome":"echo -n '==> Preparing Font-Awesome ...' && cp bower_components/font-awesome/css/font-awesome.min.css tmp/css/font-awesome.min.css && cp bower_components/font-awesome/fonts/* public/fonts/ && echo 'OK'",
+      "prepare:glyphicons":"echo -n '==> Preparing glyphicons ...' && cp bower_components/bootstrap/fonts/* public/fonts/ && echo 'OK'",
+      "prepare:angular":"echo '==> Preparing angular' && cp bower_components/angular/angular.min.js public/js/angular.min.js && npm run prepare:angular:cookies && npm run prepare:angular:colorpicker && npm run prepare:angular:numberpicker && npm run prepare:angular:tooltips && npm run prepare:angular:animate && npm run prepare:angular:socialshare && npm run prepare:angular:bootstrap && echo '==> Preparing angular OK'",
+        "prepare:angular:cookies":"echo -n '===> Deploying angular-cookies ...' && cp bower_components/angular-cookies/angular-cookies.min.js tmp/js/angular-cookies.min.js && echo 'OK'",
+        "prepare:angular:numberpicker":"echo -n '===> Deploying angular-numberpicker ...' && cp bower_components/angular-number-picker/dist/angular-number-picker.min.js tmp/js/angular-number-picker.min.js && echo 'OK'",
+        "prepare:angular:colorpicker":"echo -n '===> Deploying angular-bootstrap-colorpicker ...' && cp bower_components/angular-bootstrap-colorpicker/css/colorpicker.css tmp/css/colorpicker.css && cp bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js tmp/js/bootstrap-colorpicker-module.js && echo 'OK'",
+        "prepare:angular:tooltips":"echo -n '===> Deploying angular-tooltips ...' && cp bower_components/angular-tooltips/dist/angular-tooltips.min.css tmp/css/angular-tooltips.min.css && cp bower_components/angular-tooltips/dist/angular-tooltips.min.js tmp/js/angular-tooltips.min.js && echo 'OK'",
+        "prepare:angular:animate":"echo -n '===> Deploying angular-animate ...' && cp bower_components/angular-animate/angular-animate.min.js tmp/js/angular-animate.min.js && echo 'OK'",
+        "prepare:angular:socialshare":"echo -n '===> Deploying angular-socialshare ...' && cp bower_components/angularjs-socialshare/dist/angular-socialshare.min.js tmp/js/angular-socialshare.min.js && echo 'OK'",
+        "prepare:angular:bootstrap":"echo -n '===> Deploying angular-bootstrap ...' && cp bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js tmp/js/ui-bootstrap-tpls.min.js && echo 'OK'",
+
+
 
     "minify":"echo '=> Minifying Files' && npm run minify:html && npm run minify:js && npm run minify:css && npm run minify:images && echo '=> Minifying Files OK' ",
       "minify:html":"echo -n '==> Minifying HTML ...' && html-minifier --input-dir tmp/html/ --output-dir public/ && echo 'OK'",
@@ -69,15 +72,15 @@
       "security:libs": "echo -n '==> Verifying Libs ...' && retire && echo 'OK'",
       "security:nsp": "echo -n '==> Verifying Vulnerabilities ...' && nsp check && echo 'OK'",
 
-    "deploy":"echo '=> Deploying verbshaker' && npm run global && npm install && npm run lint && npm run assets && npm run bower && npm run test && npm run doc && npm run minify && npm run verify && npm run security && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+    "deploy":"echo '=> Deploying verbshaker' && npm run binaries && npm run configure && npm install && npm run bower && npm run prepare && npm run minify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
-    "deploy_minimal":"echo '=> MINIMAL Deploying verbshaker' && npm run global_minimal && npm install && npm run assets && npm run bower && npm run minify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+    "devbuild":"echo '=> Devbuilding verbshaker' && npm run binaries && npm run binaries:extended && npm run configure && npm install && npm run bower && npm run security && npm run lint && npm run test && npm run docs && npm run prepare && npm run minify && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
     "start": "pm2 start app.js --name verbshaker",
     "restart": "pm2 restart verbshaker",
     "stop":"pm2 stop verbshaker",
 
-    "publish":"sh publish.sh"
+    "copy":"sh publish.sh"
   },
   "dependencies": {
     "express": "*",

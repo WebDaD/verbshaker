@@ -109,22 +109,19 @@ For other Branches, see [Links above](#list-of-branches)
 1. `wget https://raw.githubusercontent.com/WebDaD/verbshaker/master/install.sh | sh`
 
 ### Native
-1. `git clone https://github.com/WebDaD/verbshaker.git`
+1. `git clone https://github.com/WebDaD/verbshaker.git .`
 2. `cd verbshaker`
-3. `npm run deploy` (Or `npm run deploy_minimal` to skip a lot of stuff)
+3. `npm run deploy` (or `npm run devbuild` for additional stuff)
 4. `npm start`
 
-### Copy to different Machine
-1. `git clone https://github.com/WebDaD/verbshaker.git`
+### Copy to different Machine from DEV Machine
+1. `git clone https://github.com/WebDaD/verbshaker.git .`
 2. `cd verbshaker`
 3. `npm run deploy`
-4. `npm run publish -- user:password@server:path`
-5. Connect to Server
-6. `cd path`
-7. `npm run start`
+4. `npm run publish -- <user:password@server> <path>`
 
 ### Docker
-1. `git clone https://github.com/WebDaD/verbshaker.git`
+1. `git clone https://github.com/WebDaD/verbshaker.git .`
 2. `cd verbshaker`
 3. `docker build -t verbshaker .`
 4. `docker run verbshaker`
@@ -146,7 +143,7 @@ _Example Config_:
 * **show_docs**: if set to false, the docs-path will not be avaiable (good for production)
 
 ## Testing / docs
-Testing is done automatically during deploy.  
+Testing is done automatically during `npm run devbuild`.  
 You may see the Results at `http://<server>:<port>/docs`
 
 ---

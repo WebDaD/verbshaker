@@ -8,7 +8,7 @@ WORKDIR /opt/verbshaker
 COPY . /opt/verbshaker
 
 # Install and Deploy
-RUN npm run deploy_minimal
+RUN npm run deploy
 
 # Expose Web Port and Set Start Command
 EXPOSE 8080
