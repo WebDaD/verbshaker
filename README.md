@@ -143,8 +143,9 @@ _Example Config_:
 * **show_docs**: if set to false, the docs-path will not be avaiable (good for production)
 
 ## Testing / docs
-Testing is done automatically during `npm run devbuild`.  
-You may see the Results at `http://<server>:<port>/docs`
+Testing is done automatically during `npm run deploy:dev`.  
+You may see the Results at `http://<server>:<port>/docs`.
+Alternatively just call `npm run test && npm run doc` on the commandline to create perform the tests and create the results.
 
 ---
 ## TODO:
