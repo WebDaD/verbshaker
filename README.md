@@ -111,7 +111,7 @@ For other Branches, see [Links above](#list-of-branches)
 ### Native
 1. `git clone https://github.com/WebDaD/verbshaker.git .`
 2. `cd verbshaker`
-3. `npm run deploy` (or `npm run devbuild` for additional stuff)
+3. `npm run deploy` (or `npm run deploy:dev` for additional stuff)
 4. `npm start`
 
 ### Copy to different Machine from DEV Machine

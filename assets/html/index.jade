@@ -16,7 +16,10 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     meta(name='DC.Rights', content='Dominik Sigmund')
     meta(name='DC.Description', content='')
     meta(name='DC.Language', content='de')
-    link(rel='stylesheet', href='css/main.min.css')
+    if dev
+      include ./styles-dev.jade
+    else
+      include ./styles.jade
     link(rel="apple-touch-icon", sizes="180x180", href="images/apple-touch-icon.png")
     link(rel="icon", type="image/png", href="images/favicon-32x32.png", sizes="32x32")
     link(rel="icon", type="image/png", href="images/favicon-16x16.png", sizes="16x16")
@@ -59,18 +62,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
         span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor}" ng-show="proverb.length > 0") {{proverb}}
     button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false") Show Navbar
     button#share.btn.btn-default.ghost-button(ng-click="openModal()") Share
-    script(src='js/jquery.min.js')
-    script(src='js/bootstrap.min.js')
-    script(src='js/shake.js')
-    // angular specific scripts
-    script(src='js/angular.min.js')
-    script(src='js/angular-cookies.min.js')
-    script(src='js/angular-animate.min.js')
-    script(src='js/angular-socialshare.min.js')
-    script(src='js/angular-tooltips.min.js')
-    script(src='js/ui-bootstrap-tpls.min.js')
-    script(src='js/angular-number-picker.min.js')
-    script(src='js/bootstrap-colorpicker-module.js')
-    // verbshaker specific scripts
-    script(src='js/verbshaker.js')
-    script(src='js/share.js')
+    if dev
+      include ./scripts-dev.jade
+    else
+      include ./scripts.jade
