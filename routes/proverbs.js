@@ -11,7 +11,7 @@
 * @param {object} app - Express app
 * @param {object} proverbCollection - proverbCollection Object
 */
-module.exports = function (app, proverbCollection) {
+module.exports = function (app, proverbCollection, imageGenerator) {
   app.get('/api/languages', function (req, res) {
     proverbCollection.languages(function (error, languages) {
       if (error) {
@@ -47,5 +47,14 @@ module.exports = function (app, proverbCollection) {
         res.status(200).send(verb)
       }
     })
+  })
+  app.get('/image/:width/:height/proverb.jpg', function (req, res) {
+    imageGenerator.random(function (error, readstream) {
+      if (error) {
+        res.status(error.status).send(error)
+      } else {
+        res.status(200).send(readstream)
+      }
+    }, req.params.width, req.params.height, req.query)
   })
 }

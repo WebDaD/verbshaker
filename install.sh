@@ -1,9 +1,9 @@
 echo 'Verbshaker Installer started'
 echo 'Installing System Requirements'
-sudo apt-get install -y curl
+sudo apt-get install -y curl 
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get update
-sudo apt-get install -y nodejs git build-essential
+sudo apt-get install -y nodejs git build-essential imagemagick
 echo 'Cloning Source Code into /opt/verbshaker'
 cd /opt
 sudo mkdir -p /opt/verbshaker

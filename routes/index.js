@@ -11,9 +11,9 @@
 * @param {object} app - Express app
 * @param {object} proverbCollection - proverbCollection Object
 */
-module.exports = function (app, proverbCollection, config) {
+module.exports = function (app, proverbCollection, imageGenerator, config) {
   // Load Verb Routes
-  require('./proverbs.js')(app, proverbCollection)
+  require('./proverbs.js')(app, proverbCollection, imageGenerator)
 
   // Sends status information
   app.get('/status', function (req, res) {

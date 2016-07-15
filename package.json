@@ -123,6 +123,7 @@
     "loadtest":"*",
     "superagent":"*",
     "http-status":"*",
-    "helmet":"*"
+    "helmet":"*",
+    "gm":"*"
   }
 }
