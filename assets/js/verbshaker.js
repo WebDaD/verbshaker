@@ -54,6 +54,15 @@
     $scope.$watch('fontcolor', function () {
       $cookies.put('verbshaker-fontcolor', $scope.fontcolor)
     })
+    // fontsize
+    if (typeof $cookies.get('verbshaker-fontsize') !== 'undefined') {
+      $scope.fontsize = $cookies.get('verbshaker-fontsize')
+    } else {
+      $scope.fontsize = 12
+    }
+    $scope.$watch('fontsize', function () {
+      $cookies.put('verbshaker-fontsize', $scope.fontsize)
+    })
     // hiddenNav
     if (typeof $cookies.get('verbshaker-hiddenNav') !== 'undefined') {
       $scope.hiddenNav = $cookies.get('verbshaker-hiddenNav') === 'true'
@@ -62,6 +71,15 @@
     }
     $scope.$watch('hiddenNav', function () {
       $cookies.put('verbshaker-hiddenNav', $scope.hiddenNav)
+    })
+    // proverbbutton
+    if (typeof $cookies.get('verbshaker-proverbbutton') !== 'undefined') {
+      $scope.proverbbutton = $cookies.get('verbshaker-proverbbutton') === 'true'
+    } else {
+      $scope.proverbbutton = true
+    }
+    $scope.$watch('proverbbutton', function () {
+      $cookies.put('verbshaker-proverbbutton', $scope.proverbbutton)
     })
     // proverb
     $scope.proverb = 'Click to Load...'

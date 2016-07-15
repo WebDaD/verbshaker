@@ -152,8 +152,6 @@ You may see the Results at `http://<server>:<port>/docs`
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
 	* customizing
-		* font-family select
-		* font size
-		* new Proverb-Button
+		* font-family select https://github.com/Jimdo/angular-fontselect
 	* image generator for sharing
 	* use intro.js to explain stuff, show button only with no cookie

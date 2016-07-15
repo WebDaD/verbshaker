@@ -82,13 +82,13 @@
 
     "deploy":"echo '=> Deploying verbshaker' && npm run binaries && npm run configure && npm install && npm run bower && npm run build && npm run minify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
-    "deploy:dev":"echo '=> Devbuilding verbshaker' && npm run binaries && npm run binaries:extended && npm run configure && npm install && npm run bower && npm run security && npm run lint && npm run test && npm run docs && npm run build:dev && npm run copy && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
+    "deploy:dev":"echo '=> Devbuilding verbshaker' && npm run binaries && npm run binaries:extended && npm run configure && npm install && npm run bower && npm run security && npm run lint && npm run test && npm run doc && npm run build:dev && npm run copy && npm run verify && echo '<= READY TO START! =>\nTYPE `npm start` to startup the Server'",
 
     "start": "pm2 start app.js --name verbshaker",
     "restart": "pm2 restart verbshaker",
     "stop":"pm2 stop verbshaker",
 
-    "copy":"sh publish.sh"
+    "publish":"sh publish.sh"
   },
   "dependencies": {
     "express": "*",
