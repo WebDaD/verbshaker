@@ -21,7 +21,7 @@
       "type": "object",
       "properties": {
         "backgroundcolor":{
-            "description":"Color of the Background as HEX",
+            "description":"Color of the Background as (HEX)",
             "type":"string"
           },
         "fontcolor":{
