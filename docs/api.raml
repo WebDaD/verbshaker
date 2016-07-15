@@ -7,6 +7,7 @@ protocols:
 version: 2.0
 schemas:
   - Status: !include models/status.json
+  - Config: !include models/config.json
   - Proverb: !include models/proverb.json
   - Proverbs: !include models/proverbs.json
   - Languages: !include models/languages.json
@@ -22,6 +23,43 @@ schemas:
             example: |
               {
               "status":"running"
+              }
+/config:
+  displayName: Config
+  description: Delivers Config-Information for verbshaker
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            schema: Config
+            example: |
+              {
+                "port":8080,
+                "proverbs":"proverbs/",
+                "show_docs":false,
+                "default": {
+                  "backgroundcolor": "#000000",
+                  "fontcolor": "#FFFFFF",
+                  "fontsize": 12,
+                  "fontfamily": "Neue Helvetica",
+                  "hiddenNav": false,
+                  "proverbbutton": true,
+                  "autoupdate": 0,
+                  "shareButton": true,
+                  "unhideNavButton": true,
+                  "introjs": true
+                },
+                "changeable": {
+                  "language": true,
+                  "backgroundcolor": true,
+                  "fontcolor": true,
+                  "fontsize": true,
+                  "fontfamily": true,
+                  "hideNav": true,
+                  "proverbbutton": true,
+                  "autoupdate": true
+                }
               }
 /api:
   displayName: Main API Endpoint

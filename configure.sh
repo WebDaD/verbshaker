@@ -1,5 +1,13 @@
 #!/bin/bash
 echo '=> Configuration...'
+echo -n "Skip Configuration and use Default Values? (y|n) [n]: "
+read -n 1 skip
+echo ''
+if [ $skip == "y" ]
+then
+  echo '=> Configuration Skipped'
+  exit 0
+fi
 PORT=$(json -f package.json config.port | sed -e 's/\n//g')
 echo -n "Enter Port [$PORT]: "
 read -r newport
@@ -20,4 +28,8 @@ then
 else
   echo "Port set to $PROVERBS"
 fi
+# TODO show docs
+# TODO show default
+# TODO show changevale
 echo '=> Configuration Complete'
+exit 0

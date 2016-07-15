@@ -11,13 +11,17 @@
 * @param {object} app - Express app
 * @param {object} proverbCollection - proverbCollection Object
 */
-module.exports = function (app, proverbCollection) {
+module.exports = function (app, proverbCollection, config) {
   // Load Verb Routes
   require('./proverbs.js')(app, proverbCollection)
 
   // Sends status information
   app.get('/status', function (req, res) {
     res.status(200).send({status: 'running'})
+  })
+  // Sends config
+  app.get('/config', function (req, res) {
+    res.status(200).send(config)
   })
   /** Middleware to Catch Errors
   * @param {object} err - Express.err Object

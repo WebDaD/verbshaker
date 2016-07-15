@@ -44,7 +44,7 @@ var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, fun
     app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
 
     // Routes
-    require('./routes')(app, proverbCollection)
+    require('./routes')(app, proverbCollection, pack.config)
 
     // catches ctrl+c event
     process.on('SIGINT', exitHandler)

@@ -135,24 +135,70 @@ _Example Config_:
 "config": {
 	"port":8080,
 	"proverbs":"proverbs/",
-	"show_docs":true
+	"show_docs":true,
+	"default": {
+		"backgroundcolor": "#000000",
+		"fontcolor": "#FFFFFF",
+		"fontsize": 12,
+		"fontfamily": "Neue Helvetica",
+		"hiddenNav": false,
+		"proverbbutton": true,
+		"autoupdate": 0,
+		"shareButton": true,
+		"unhideNavButton": true,
+		"introjs": true
+	},
+	"changeable": {
+		"language": true,
+		"backgroundcolor": true,
+		"fontcolor": true,
+		"fontsize": true,
+		"fontfamily": true,
+		"hideNav": true,
+		"proverbbutton": true,
+		"autoupdate": true
+	}
 }
 ```
 * **port**: the Web-Port where the app will be found
 * **proverbs**: The path where the csv-files with the proverbs live
 * **show_docs**: if set to false, the docs-path will not be avaiable (good for production)
+* **default**: Here are the Default Setting for the Website
+ * _backgroundcolor_: Default Color of the Background (HEX)
+ * _fontcolor_: Default Color of the Font (HEX)
+ * _fontsize_: Default Size of the Font (in vmin)
+ * _fontfamily_: Default Family of the Font
+ * _hiddenNav_: Is the Navbar Hidden (bool)
+ * _proverbbutton_: Is the proverbbutton shown (bool)
+ * _autoupdate_: AutoUpdate Value for Proverbs (0 = off)
+ * _shareButton_: Is the ShareButton shown (bool)
+ * _unhideNavButton_: Is the Button to show the Navbar shown (bool)
+ * _introjs_: Use intro.js to show new users around (bool)
+* **changeable**: Here is set what can be customized by the user
+ * _language_: Change the language (bool)
+ * _backgroundcolor_: Change the Color of the Background (bool)
+ * _fontcolor_: Change the Color of the Font (bool)
+ * _fontsize_: Change the Size of the Font (bool)
+ * _fontfamily_: Change the Family of the Font (bool)
+ * _hideNav_: Allow to Hide the Navbar (bool)
+ * _proverbbutton_: Toggle proverb-Button (bool)
+ * _autoupdate_: Change the Autoupdate Value (bool)
 
 ## Testing / docs
 Testing is done automatically during `npm run deploy:dev`.  
 You may see the Results at `http://<server>:<port>/docs`.
-Alternatively just call `npm run test && npm run doc` on the commandline to create perform the tests and create the results.
+Alternatively just call `npm run test && npm run doc` on the commandline to perform the tests and create the results.
 
 ---
 ## TODO:
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
+	* configure.sh
+		* default values / changeables
 	* customizing
 		* font-family select https://github.com/Jimdo/angular-fontselect
 	* image generator for sharing
+		* path /proverb.png (GET, but have a body with options. if not given, use default config)
+		* testing
 	* use intro.js to explain stuff, show button only with no cookie
