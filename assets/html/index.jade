@@ -67,6 +67,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
         button#newProverb.btn.btn-default.ghost-button(ng-show="proverbbutton" ng-click="newProverb()") New Proverb
     button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false" ng-if="default.unhideNavButton") Show Navbar
     button#share.btn.btn-default.ghost-button(ng-click="openModal()" ng-if="default.shareButton") Share
+    script(src="/reload/reload.js")
     if dev
       include ./scripts-dev.jade
     else

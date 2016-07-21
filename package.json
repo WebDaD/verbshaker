@@ -124,6 +124,7 @@
     "superagent":"*",
     "http-status":"*",
     "helmet":"*",
-    "gm":"*"
+    "gm":"*",
+    "reload":"*"
   }
 }

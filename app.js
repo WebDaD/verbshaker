@@ -16,6 +16,7 @@ var pack = require('./package.json')
 var favicon = require('serve-favicon')
 var helmet = require('helmet')
 var ip = require('ip')
+var reload = require('reload')
 var path = require('path')
 var ProverbCollection = require('./libs/proverbCollection.js')
 var Proverb = require('./libs/proverbs.js')
@@ -43,6 +44,9 @@ var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, fun
     console.log('Point Browser to http://' + ip.address() + ':' + pack.config.port)
     // Server favicon
     app.use(favicon(path.join(__dirname, '/public/images/favicon.ico')))
+
+    // reload connected clients on restart
+    reload(server, app)
 
     // Routes
     require('./routes')(app, proverbCollection, new ImageGenerator(pack.config.default), pack.config)
