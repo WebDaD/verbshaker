@@ -146,7 +146,10 @@ _Example Config_:
 		"autoupdate": 0,
 		"shareButton": true,
 		"unhideNavButton": true,
-		"introjs": true
+		"introjs": true,
+		"image_width": "1280",
+		"image_height": "1024",
+		"image_text": "Verbshaker!!!"
 	},
 	"changeable": {
 		"language": true,
@@ -174,6 +177,9 @@ _Example Config_:
  * _shareButton_: Is the ShareButton shown (bool)
  * _unhideNavButton_: Is the Button to show the Navbar shown (bool)
  * _introjs_: Use intro.js to show new users around (bool)
+ * _image_width_: Default Width of the image generated
+ * _image_height_: Default Height of the image generated
+ * _image_text_: Default Text of the image generated (should never be used)
 * **changeable**: Here is set what can be customized by the user
  * _language_: Change the language (bool)
  * _backgroundcolor_: Change the Color of the Background (bool)
@@ -201,7 +207,7 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 		* jsdoc
 		* add width, height, text to config.default
 		* testing
-		* uinittest
+		* unittest
 		* integration test
 		* add to share-modal (autocreated)
 	* use intro.js to explain stuff, show button only with no cookie
