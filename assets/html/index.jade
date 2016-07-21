@@ -1,5 +1,5 @@
 doctype html
-html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
+html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController as ctrl")
   head
     meta(name='author', content='Dominik Sigmund')
     meta(name='publisher', content='Dominik Sigmund')
@@ -16,6 +16,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     meta(name='DC.Rights', content='Dominik Sigmund')
     meta(name='DC.Description', content='')
     meta(name='DC.Language', content='de')
+    link(rel='stylesheet' ng-href="/css/{{ctrl.settings.fontfamily}}.css")
     if dev
       include ./styles-dev.jade
     else
@@ -30,8 +31,8 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
     meta(name="msapplication-config", content="images/browserconfig.xml")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
     title VerbShaker
-  body.no-skin(ng-style="{'background-color':backgroundcolor}")
-    nav.navbar.navbar-default.navbar-fixed-top(ng-show="!hiddenNav")
+  body.no-skin(ng-style="{'background-color':ctrl.settings.backgroundcolor}")
+    nav.navbar.navbar-default.navbar-fixed-top(ng-show="!ctrl.settings.hiddenNav")
       .fluid-container
         .navbar-header
           button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
@@ -43,30 +44,32 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
             img(src="images/android-chrome-192x192.png")
             span Verbshaker
         #navbar.collapse.navbar-collapse(style="max-height: 500px;")
-          ul.nav.navbar-nav.navbar-left(ng-if="changeable.language")
-            li(ng-class="{ active:  $parent.language === lang}" ng-repeat="lang in languages")
-              a(href='#' ng-click="$parent.language = lang")
+          ul.nav.navbar-nav.navbar-left(ng-if="ctrl.changeable.language")
+            li(ng-class="{ active:  ctrl.settings.language === lang}" ng-repeat="lang in ctrl.languages")
+              a(href='#' ng-click="ctrl.settings.language = lang; ctrl.updateSettings(); ctrl.newProverb()")
                 span.flag-icon(ng-class="'flag-icon-'+lang" tooltips tooltip-template="Change to {{lang}}")
           ul.nav.navbar-nav.navbar-right(style="margin-right: 15px;")
-            li.navbar-btn(style="width:50px; margin-right: 50px;margin-left: 10px;" ng-if="changeable.autoupdate")
-              h-number(tooltips tooltip-template="Autoupdate every x Seconds. 0 is off" value="autoupdate" min="0" max="60" step="1")
-            li(ng-if="changeable.backgroundcolor")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="backgroundcolor") Background
-            li(ng-if="changeable.fontcolor")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="fontcolor") Font
-            li.navbar-btn(style="width:50px; margin-right: 50px; margin-left: 10px;" ng-if="changeable.fontsize")
-              h-number(tooltips tooltip-template="Fontsize relative to screensize" value="fontsize" min="1" max="60" step="1")
-            li(ng-if="changeable.proverbbutton")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Toggle Proverb-Button" style="margin-left:10px" type="button" ng-click="proverbbutton = !proverbbutton") Button
-            li(ng-if="changeable.hideNav")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Hide this Navbar" style="margin-left:10px" type="button" ng-click="hiddenNav = true") Hide Navbar
+            li.navbar-btn(style="width:50px; margin-right: 50px;margin-left: 10px;" ng-if="ctrl.changeable.autoupdate")
+              h-number(tooltips tooltip-template="Autoupdate every x Seconds. 0 is off" value="ctrl.settings.autoupdate" ng-model="ctrl.settings.autoupdate" min="0" max="60" step="1")
+            li(ng-if="ctrl.changeable.backgroundcolor")
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="ctrl.settings.backgroundcolor" ng-change="ctrl.updateSettings()") Background Color
+            li(ng-if="ctrl.changeable.fontcolor")
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="ctrl.settings.fontcolor" ng-change="ctrl.updateSettings()") Font Color
+            li(ng-if="ctrl.changeable.fontfamily")
+              select.form-control.navbar-btn(tooltips tooltip-template="Change Font Family" style="margin-left:10px" ng-options="font.postscriptName as font.family for font in ctrl.fonts track by font.postscriptName" ng-model="ctrl.settings.fontfamily" ng-change="ctrl.updateSettings()")
+            li.navbar-btn(style="width:50px; margin-right: 50px; margin-left: 10px;" ng-if="ctrl.changeable.fontsize")
+              h-number(tooltips tooltip-template="Fontsize relative to screensize" value="ctrl.settings.fontsize" ng-model="ctrl.settings.fontsize" min="1" max="60" step="1")
+            li(ng-if="ctrl.changeable.proverbbutton")
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Toggle Proverb-Button" style="margin-left:10px" type="button" ng-click="ctrl.settings.proverbbutton = !ctrl.settings.proverbbutton;ctrl.updateSettings()") Button
+            li(ng-if="ctrl.changeable.hideNav")
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Hide this Navbar" style="margin-left:10px" type="button" ng-click="ctrl.settings.hiddenNav = true;ctrl.updateSettings()") Hide Navbar
         // /.nav-collapse
     #content.fluid-container.container-table
       .row.vertical-center-row
-        span#proverb(ng-click="newProverb()" ng-style="{'color':fontcolor, 'font-size':fontsize+'vmin'}" ng-show="proverb.length > 0") {{proverb}}
-        button#newProverb.btn.btn-default.ghost-button(ng-show="proverbbutton" ng-click="newProverb()") New Proverb
-    button#showNavbar.btn.btn-default.ghost-button(ng-show="hiddenNav" ng-click="hiddenNav = false" ng-if="default.unhideNavButton") Show Navbar
-    button#share.btn.btn-default.ghost-button(ng-click="openModal()" ng-if="default.shareButton") Share
+        span#proverb(ng-click="ctrl.newProverb();ctrl.updateSettings()" ng-style="{'color':ctrl.settings.fontcolor, 'font-size':ctrl.settings.fontsize+'vmin', 'font-family':ctrl.settings.fontfamily}" ng-show="ctrl.proverb.length > 0") {{ctrl.proverb}}
+        button#newProverb.btn.btn-default.ghost-button(ng-show="ctrl.settings.proverbbutton" ng-click="ctrl.newProverb()") New Proverb
+    button#showNavbar.btn.btn-default.ghost-button(ng-show="ctrl.settings.hiddenNav" ng-click="ctrl.settings.hiddenNav = false;ctrl.updateSettings()" ng-if="ctrl.default.unhideNavButton") Show Navbar
+    button#share.btn.btn-default.ghost-button(ng-click="ctrl.openModal()" ng-if="ctrl.default.shareButton") Share
     script(src="/reload/reload.js")
     if dev
       include ./scripts-dev.jade

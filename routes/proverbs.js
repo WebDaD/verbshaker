@@ -49,12 +49,14 @@ module.exports = function (app, proverbCollection, imageGenerator) {
     })
   })
   app.get('/image/:width/:height/proverb.jpg', function (req, res) {
-    imageGenerator.random(function (error, readstream) {
+    imageGenerator.generate(req.params.width, req.params.height, req.query, function (error, readstream) {
       if (error) {
-        res.status(error.status).send(error)
+        // res.status(error.status).send(error)
+        res.status(501).send('error')
       } else {
-        res.status(200).send(readstream)
+        res.writeHead(200, { 'Content-Type': 'image/jpg' })
+        res.end(readstream, 'binary')
       }
-    }, req.params.width, req.params.height, req.query)
+    })
   })
 }

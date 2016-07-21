@@ -9,8 +9,8 @@
     "default": {
   		"backgroundcolor": "#000000",
   		"fontcolor": "#FFFFFF",
-  		"fontsize": 12,
-  		"fontfamily": "Neue Helvetica",
+  		"fontsize": 14,
+  		"fontfamily": "LMRoman17-Regular",
   		"hiddenNav": false,
   		"proverbbutton": true,
   		"autoupdate": 0,
@@ -58,7 +58,7 @@
     "bower":"echo '=> Downloading Bower Assets' && echo '==> Bower install' && bower install --allow-root && echo '=> Downloading Bower Assets OK'",
 
     "build":"echo '=> Building Website Assets' && npm run build:baseline && npm run build:html && npm run build:js && npm run build:css && npm run build:images && npm run build:bootstrap && npm run build:jquery && npm run build:shakejs && npm run build:flag-icons && npm run build:font-awesome && npm run build:glyphicons && npm run build:angular && echo '=> Building Website Assets OK'",
-    "build:dev":"echo '=> Building Website Assets' && npm run build:baseline && npm run build:html:dev && npm run build:js && npm run build:css && npm run build:images && npm run build:bootstrap && npm run build:jquery && npm run build:shakejs && npm run build:flag-icons && npm run build:font-awesome && npm run build:glyphicons && npm run build:angular && echo '=> Building Website Assets OK'",
+    "build:dev":"echo '=> Building Website Assets' && npm run build:baseline && npm run build:html:dev && npm run build:js && npm run build:css && npm run build:images && npm run build:bootstrap && npm run build:jquery && npm run build:flag-icons && npm run build:font-awesome && npm run build:glyphicons && npm run build:angular && echo '=> Building Website Assets OK'",
       "build:baseline":"echo -n '==> Building Folders ...' && mkdir -p public && mkdir -p tmp && rm -rf public/* &&  rm -rf tmp/* && mkdir -p public/css && mkdir -p public/flags && mkdir -p public/js && mkdir -p public/images && mkdir -p public/fonts && mkdir -p tmp/css && mkdir -p tmp/js && mkdir -p tmp/images && mkdir -p tmp/html && echo 'OK'",
       "build:html":"echo -n '==> Building HTML ...' && jade assets/html/index.jade --obj '{ \"dev\": false }' -o tmp/html/ > /dev/null && jade assets/html/share.jade -o tmp/html/ > /dev/null && echo 'OK'",
       "build:html:dev":"echo -n '==> Building HTML ...' && jade assets/html/index.jade --obj '{ \"dev\": true }' -o tmp/html/ > /dev/null && jade assets/html/share.jade -o tmp/html/ > /dev/null && echo 'OK'",
@@ -67,7 +67,6 @@
       "build:images":"echo -n '==> Building Images ...' && cp assets/images/* tmp/images/ 2>>/dev/null | true && echo 'OK'",
       "build:bootstrap":"echo -n '==> Building Bootstrap ...' && cp bower_components/bootstrap/dist/css/bootstrap.min.css tmp/css/bootstrap.min.css && cp bower_components/bootstrap/dist/js/bootstrap.min.js tmp/js/bootstrap.min.js && echo 'OK'",
       "build:jquery":"echo -n '==> Building jQuery ...' && cp bower_components/jquery/dist/jquery.min.js tmp/js/jquery.min.js && echo 'OK'",
-      "build:shakejs":"echo -n '==> Building shake.js ...' && cp bower_components/shake.js/shake.js tmp/js/shake.js && echo 'OK'",
       "build:flag-icons":"echo -n '==> Building Flag-Icons ...' && cp bower_components/flag-icon-css/css/flag-icon.min.css tmp/css/flag-icon.min.css && cp -r bower_components/flag-icon-css/flags/* public/flags && echo 'OK'",
       "build:font-awesome":"echo -n '==> Building Font-Awesome ...' && cp bower_components/font-awesome/css/font-awesome.min.css tmp/css/font-awesome.min.css && cp bower_components/font-awesome/fonts/* public/fonts/ && echo 'OK'",
       "build:glyphicons":"echo -n '==> Building glyphicons ...' && cp bower_components/bootstrap/fonts/* public/fonts/ && echo 'OK'",
@@ -128,6 +127,7 @@
     "http-status":"*",
     "helmet":"*",
     "gm":"*",
-    "reload":"*"
+    "reload":"*",
+    "font-manager":"*"
   }
 }

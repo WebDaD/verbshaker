@@ -21,6 +21,7 @@ var path = require('path')
 var ProverbCollection = require('./libs/proverbCollection.js')
 var Proverb = require('./libs/proverbs.js')
 var ImageGenerator = require('./libs/imageGenerator.js')
+var fontManager = require('font-manager')
 // Send public and docs
 app.use(express.static(path.join(__dirname, '/public')))
 if (pack.config.show_docs) {
@@ -49,7 +50,7 @@ var proverbCollection = new ProverbCollection(pack.config.proverbs, Proverb, fun
     reload(server, app)
 
     // Routes
-    require('./routes')(app, proverbCollection, new ImageGenerator(pack.config.default), pack.config)
+    require('./routes')(app, proverbCollection, new ImageGenerator(pack.config.default), pack.config, fontManager)
 
     // catches ctrl+c event
     process.on('SIGINT', exitHandler)

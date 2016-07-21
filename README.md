@@ -203,11 +203,9 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 	* customizing
 		* font-family select https://github.com/Jimdo/angular-fontselect
 	* image generator for sharing
-		* path /image/:width/:height/proverb.jpg?t=&fs=&ff=&bc=&fc (GET, but have a query with options. if not given, use default config)
 		* jsdoc
-		* add width, height, text to config.default
-		* testing
 		* unittest
 		* integration test
 		* add to share-modal (autocreated)
+			* share-modal -> edit image options (width, height, colors, ...)
 	* use intro.js to explain stuff, show button only with no cookie
