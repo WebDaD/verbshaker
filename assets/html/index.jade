@@ -56,7 +56,7 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
             li(ng-if="changeable.fontcolor")
               button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="settings.font.color" ng-change="updateSettings()") Font Color
             li(ng-if="changeable.fontfamily")
-              ui-select.form-control.navbar-btn(theme="bootstrap" tooltips tooltip-template="Change Font Family" style="margin-left:10px" ng-options="font.postscriptName as font.family for font in fonts" ng-model="settings.font.family" ng-change="updateSettings()")
+              select.form-control.navbar-btn(style="margin-left:10px" ng-options="font.postscriptName as font.family for font in fonts" ng-model="settings.font.family" ng-change="updateSettings()")
             li.navbar-btn(style="width:50px; margin-right: 50px; margin-left: 10px;" ng-if="changeable.fontsize")
               h-number(tooltips tooltip-template="Fontsize relative to screensize" value="settings.font.size" ng-model="settings.font.size" min="1" max="60" step="1")
             li(ng-if="changeable.proverbbutton")
