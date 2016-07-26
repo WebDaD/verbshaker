@@ -200,8 +200,6 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
 * improvements
-	* customizing
-		* font-family select https://github.com/Jimdo/angular-fontselect
 	* image generator for sharing
 		* jsdoc
 		* unittest
