@@ -30,6 +30,8 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * ...
 
 ## List of Branches
+__Important__: Try to get all functionalities and options to the other branches!
+
 * [master](https://github.com/WebDaD/verbshaker) => node.js + Angular
 * mmm (tbd) => MagicMirror² Module
 * php (tbd) => Website based on php
@@ -199,11 +201,20 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 ## TODO:
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
+	* api_base
+	* api_images
+	* imageGenerator
 * improvements
 	* image generator for sharing
-		* jsdoc
-		* unittest
-		* integration test
+		* Link to Image from Main (Button bottom right)
 		* add to share-modal (autocreated)
 			* share-modal -> edit image options (width, height, colors, ...)
 	* use intro.js to explain stuff, show button only with no cookie
+	* background
+		* use image instead of color:
+			* meme
+			* upsplash
+			* Linked image somewhere
+	* positioning of Text
+		* top middle bottom
+		* left center right

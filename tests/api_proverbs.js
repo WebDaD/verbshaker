@@ -6,7 +6,7 @@ var ip = require('ip')
 var pack = require('../package.json')
 const spawn = require('child_process').spawn
 var server
-describe('IT01: API Test', function () {
+describe('IT01: API Proverbs Test', function () {
   const uri = 'http://' + ip.address() + ':' + pack.config.port
   before(function (done) {
     server = spawn('node', ['app.js'])

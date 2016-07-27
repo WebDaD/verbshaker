@@ -1,5 +1,20 @@
-// TODO jsdoc
+/**
+ * @overview 	ImageGenerator-Object, creates Images using gm and imageMagick
+ * @module imageGenerator
+ * @author Dominik Sigmund
+ * @version 0.2
+ * @description	Creates an Object. Has specific methods to show and manipulate data
+ * @memberof verbshaker
+ * @requires module:gm
+ * @requires bin:imageMagick
+ * @requires module:font-manager
+ */
 
+ /** Creates a instance of class ImageGenerator
+ * @class ImageGenerator
+ * @param {object} config - A config object containing the default settings
+ * @returns {ImageGenerator} The Object
+ * */
 function ImageGenerator (config) {
   var self = {}
   self.default = config
@@ -8,6 +23,19 @@ function ImageGenerator (config) {
   self.fontManager = require('font-manager')
   return self
 }
+/** Create an Image based on some data
+ * @param {string} width - Width of the Image
+ * @param {string} height - Height of the Image
+ * @param {object} params - More additional Parameters
+ * @param {object.bc} backgroundcolor - Backgroundcolor as string
+ * @param {object.fc} fontcolor - Fontcolor as string
+ * @param {object.ff} fontfamily - Fontfamily as string
+ * @param {object.fs} fontsize - Fontsize as string
+ * @param {object.t} text - Text as string
+ * @param {ImageGenerator~generateCallback} callback - A Callback with the Image
+ * @throws NoCallbackError
+ * @returns Nothing
+ * */
 function generate (width, height, params, callback) {
   if (typeof callback !== 'undefined' && typeof callback !== 'function') {
     throw new Error('no Callback given: ' + typeof callback)
@@ -38,3 +66,9 @@ function generate (width, height, params, callback) {
   }
 }
 module.exports = ImageGenerator
+/**
+ * This callback is displayed as part of the ImageGenerator class.
+ * @callback ImageGenerator~generateCallback
+ * @param {object} Error or null
+ * @param {buffer} The Image, ready to stream or save
+ */
