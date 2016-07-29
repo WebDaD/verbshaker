@@ -32,22 +32,30 @@ module.exports = function (app, proverbCollection, imageGenerator, config, fontM
   // Get font by Name
   app.get('/fonts/:postscriptName.ttf', function (req, res) {
     fontManager.findFont({postscriptName: req.params.postscriptName}, function (font) {
-      fs.readFile(font.path, function (err, data) {
-        if (err) {
-          res.status(404).send(err)
-        } else {
-          res.status(200).send(data)
-        }
-      })
+      if (req.params.postscriptName !== font.postscriptName) {
+        return res.status(404).send('Font not Found')
+      } else {
+        fs.readFile(font.path, function (err, data) {
+          if (err) {
+            return res.status(404).send(err)
+          } else {
+            return res.status(200).send(data)
+          }
+        })
+      }
     })
   })
   // Get font-face css-file by Name
   app.get('/css/:postscriptName.css', function (req, res) {
     fontManager.findFont({postscriptName: req.params.postscriptName}, function (font) {
-      var content = '@font-face {font-family: "' + font.postscriptName + '";src: url("/fonts/' + font.postscriptName + '.ttf")  format("truetype");}'
-      res.writeHead(200, {'Content-Type': 'text/css'})
-      res.write(content, 'utf8')
-      res.end()
+      if (req.params.postscriptName !== font.postscriptName) {
+        return res.status(404).send('Font not Found')
+      } else {
+        var content = '@font-face {font-family: "' + font.postscriptName + '";src: url("/fonts/' + font.postscriptName + '.ttf")  format("truetype");}'
+        res.writeHead(200, {'Content-Type': 'text/css'})
+        res.write(content, 'utf8')
+        res.end()
+      }
     })
   })
   /** Middleware to Catch Errors

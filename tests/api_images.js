@@ -27,7 +27,7 @@ describe('IT03: API Image Functions Test', function () {
 })
 process.on('exit', function () {
   if (server) {
-    server.kill()
+    server.kill('SIGHUP')
     server = null
   }
 })

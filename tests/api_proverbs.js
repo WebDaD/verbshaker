@@ -88,7 +88,7 @@ describe('IT01: API Proverbs Test', function () {
 })
 process.on('exit', function () {
   if (server) {
-    server.kill()
+    server.kill('SIGHUP')
     server = null
   }
 })

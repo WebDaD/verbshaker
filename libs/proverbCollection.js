@@ -220,7 +220,7 @@ function fullRandomSync () {
  * @returns {object.language} the language of the proverb
  * */
 function returnFullRandom (proverbs) {
-  var rnd = Math.floor(Math.random() * (proverbs.length - 0 + 1)) + 0
+  var rnd = Math.floor(Math.random() * proverbs.length)
   for (var i = 0; i < proverbs.length; i++) {
     if (i === rnd) {
       return proverbs[i].randomSync()

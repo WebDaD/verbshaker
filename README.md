@@ -201,7 +201,6 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 ## TODO:
 * tests
 	* selenium test gui http://nightwatchjs.org/guide#using-mocha
-	* api_base
 	* api_images
 	* imageGenerator
 * improvements
