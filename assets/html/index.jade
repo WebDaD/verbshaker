@@ -52,9 +52,9 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
             li.navbar-btn(style="width:50px; margin-right: 50px;margin-left: 10px;" ng-if="changeable.autoupdate")
               h-number(tooltips tooltip-template="Autoupdate every x Seconds. 0 is off" value="settings.autoupdate" ng-model="settings.autoupdate" min="0" max="60" step="1")
             li(ng-if="changeable.backgroundcolor")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="settings.backgroundcolor" ng-change="updateSettings()") Background Color
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Background Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="settings.backgroundcolor" ng-change="updateSettings()" ng-style="{'background-color': settings.backgroundcolor}") Background Color
             li(ng-if="changeable.fontcolor")
-              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="settings.font.color" ng-change="updateSettings()") Font Color
+              button.btn.btn-default.navbar-btn(tooltips tooltip-template="Change Font Color" style="margin-left:10px" colorpicker="hex" type="button" ng-model="settings.font.color" ng-change="updateSettings()" ng-style="{'background-color': settings.font.color}") Font Color
             li(ng-if="changeable.fontfamily")
               select.form-control.navbar-btn(style="margin-left:10px" ng-options="font.postscriptName as font.family for font in fonts" ng-model="settings.font.family" ng-change="updateSettings()")
             li.navbar-btn(style="width:50px; margin-right: 50px; margin-left: 10px;" ng-if="changeable.fontsize")
@@ -65,13 +65,11 @@ html(lang='de', ng-app='verbshaker' ng-controller="verbshakerController")
               button.btn.btn-default.navbar-btn(tooltips tooltip-template="Hide this Navbar" style="margin-left:10px" type="button" ng-click="settings.hiddenNav = true;updateSettings()") Hide Navbar
         // /.nav-collapse
     #content.fluid-container.container-table
-      .row.vertical-center-row
-        span#proverb(ng-click="newProverb();updateSettings()" ng-style="{'color':settings.font.color, 'font-size':settings.font.size+'vmin', 'font-family':settings.font.family}" ng-show="proverb.length > 0") {{proverb}}
+      .row.vertical-center-row(ng-style="{'vertical-align':settings.position_vertical}")
+        span#proverb(ng-click="newProverb();updateSettings()" ng-style="{'color':settings.font.color, 'font-size':settings.font.size+'vmin', 'font-family':settings.font.family, 'text-align':settings.position_horizontal}" ng-show="proverb.length > 0") {{proverb}}
         button#newProverb.btn.btn-default.ghost-button(ng-show="settings.proverbbutton" ng-click="newProverb()") New Proverb
     button#showNavbar.btn.btn-default.ghost-button(ng-show="settings.hiddenNav" ng-click="settings.hiddenNav = false;updateSettings()" ng-if="default.unhideNavButton") Show Navbar
     button#share.btn.btn-default.ghost-button(ng-click="openModal()" ng-if="default.shareButton") Share
-    button(ng-click="settings.font.family='XtrusionBRK'") TEST
-    button(ng-click="settings.font.family='Conduit2ItalicsBRK'") TEST2
     script(src="/reload/reload.js")
     if dev
       include ./scripts-dev.jade

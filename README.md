@@ -151,7 +151,9 @@ _Example Config_:
 		"introjs": true,
 		"image_width": "1280",
 		"image_height": "1024",
-		"image_text": "Verbshaker!!!"
+		"image_text": "Verbshaker!!!",
+		"position_vertical": "middle",
+		"position_horizontal": "center"
 	},
 	"changeable": {
 		"language": true,
@@ -161,7 +163,8 @@ _Example Config_:
 		"fontfamily": true,
 		"hideNav": true,
 		"proverbbutton": true,
-		"autoupdate": true
+		"autoupdate": true,
+		"textposition": true
 	}
 }
 ```
@@ -182,7 +185,9 @@ _Example Config_:
  * _image_width_: Default Width of the image generated
  * _image_height_: Default Height of the image generated
  * _image_text_: Default Text of the image generated (should never be used)
-* **changeable**: Here is set what can be customized by the user
+ * _position_vertical_: Default position of the Text (vertically, can be top, middle, bottom)
+ * _position_horizontal_: Default position of the Text (horizontally, can be left, center, right)
+ * **changeable**: Here is set what can be customized by the user
  * _language_: Change the language (bool)
  * _backgroundcolor_: Change the Color of the Background (bool)
  * _fontcolor_: Change the Color of the Font (bool)
@@ -191,6 +196,7 @@ _Example Config_:
  * _hideNav_: Allow to Hide the Navbar (bool)
  * _proverbbutton_: Toggle proverb-Button (bool)
  * _autoupdate_: Change the Autoupdate Value (bool)
+ * _textposition_: Allow to Change Text Position (bool)
 
 ## Testing / docs
 Testing is done automatically during `npm run deploy:dev`.  
@@ -215,5 +221,9 @@ Alternatively just call `npm run test && npm run doc` on the commandline to perf
 			* upsplash
 			* Linked image somewhere
 	* positioning of Text
-		* top middle bottom
-		* left center right
+		* textposition(editable)
+			* cookies
+			* Loading
+			* menu
+				* top middle bottom
+				* left center right
