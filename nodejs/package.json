@@ -4,7 +4,7 @@
   "private": true,
   "config": {
     "port":8080,
-    "proverbs":"proverbs/",
+    "proverbs":"../proverbs/",
     "show_docs":false,
     "default": {
   		"backgroundcolor": "#000000",
