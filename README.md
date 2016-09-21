@@ -29,7 +29,7 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 * [Spanish](https://raw.githubusercontent.com/WebDaD/verbshaker/proverbs/es.csv)
 * ...
 
-## List of Languages
+## List of Code-Languages
 __Important__: Try to get all functionalities and options to the other branches!
 
 * [node.js](https://github.com/WebDaD/verbshaker/tree/master/nodejs) => node.js + Angular

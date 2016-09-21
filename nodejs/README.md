@@ -1,7 +1,7 @@
 
 # Node.js
 This is the node.js-Branch.
-For other Languages, see [The Main List](https://github.com/WebDaD/verbshaker/#list-of-languages)
+For other Languages, see [The Main List](https://github.com/WebDaD/verbshaker/#list-of-code-languages)
 
 [Demo is running here](http://)
 
