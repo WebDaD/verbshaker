@@ -32,8 +32,8 @@ We found out, that in many languages, proverbs consist of two halfes. If you mix
 ## List of Languages
 __Important__: Try to get all functionalities and options to the other branches!
 
-* [node.js](https://github.com/WebDaD/verbshaker/nodejs) => node.js + Angular
-* [mmm](https://github.com/WebDaD/verbshaker/mmm) (tbd) => MagicMirror² Module
+* [node.js](https://github.com/WebDaD/verbshaker/tree/master/nodejs) => node.js + Angular
+* [mmm](https://github.com/WebDaD/verbshaker/tree/master/mmm) (tbd) => MagicMirror² Module
 * php (tbd) => Website based on php
 * bash (tbd) => Simple BashCommand for Linux
 * perl (tbd) => perl commandline tool
